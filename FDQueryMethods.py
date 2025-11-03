@@ -19,7 +19,7 @@ def format_density(arg,width:int=8) -> str:
     """
     try:
         arg=str(arg)
-        value = arg.strip()
+        value = arg.strip().split(",")[0]
         bytes_val = 0.0  # 统一转换为 MB 作为中间单位
 
         # 提取数值并转换为 MB（1字节=8比特）
@@ -279,7 +279,7 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 data["density"] = DENSITY_MAPPING1.get(id_str[2:4], "未知")
                 data["die"],data["cellLevel"]=get_die_cellLevel(id_str)
                 data["pageSize"] = ["2","4","8","16"][int(id_str[7],16)%4]
-                data["totalPlane"]={"76":"2","7A":"4","7E":"8","F2":"16"}[id_str[8:10]]
+                data["totalPlane"]={"6":"2","A":"4","E":"8","2":"16"}[id_str[9]]
                 pn1=int(id_str[10],16)%8
                 pn2=int(id_str[11],16)%8
                 p_n=str(pn1)+str(pn2)

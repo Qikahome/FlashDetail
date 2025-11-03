@@ -127,5 +127,16 @@
         "rawVendor": "samsung"
       }
     }
+  },
+  "micron_pn_decode": {
+    "nw519": {
+      "data": {
+        "category": "Unknown",
+        "fbga-code": "NW519",
+        "page-url": "None",
+        "part-number": "MT29F84G08CECABH1-12QZ:A",
+        "sub-category": "Unknown"
+      }
+    }
   }
 }

@@ -3,7 +3,9 @@ import re
 from .FDConfig import config_instance as plugin_config
 from . import FDQueryMethods
 import urllib3
-
+# 插件版本信息
+PLUGIN_VERSION = "4.0.0"
+    
 # 抑制因忽略SSL验证产生的警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 try:
@@ -27,9 +29,7 @@ try:
         return user_id == plugin_config.owner
 
 
-    # 插件版本信息
-    PLUGIN_VERSION = "3.0.0"
-    
+
     # 基础帮助文本（所有用户可见）
     BASE_HELP_TEXT = """
 FlashDetail插件使用说明
@@ -126,7 +126,7 @@ FlashDetail插件使用说明
         await whoami_cmd.send(f"您的用户ID是：{user_id}")
 
     def is_key_word(message_text:str) -> bool:
-        return message_text and any([i in message_text.lower() for i in ["撤回","/","查","id"]])
+        return message_text.strip() and any([i in message_text.lower() for i in ["撤回","/","查","id"]])
     # 撤回
     @撤回_cmd.handle()
     async def 撤回(event: V11Event, bot: V11Bot):
@@ -169,10 +169,8 @@ FlashDetail插件使用说明
             last_message[session_id][1] += 1
         else:
             last_message[session_id] = [event.get_message().extract_plain_text(), 1]
-        if(plugin_config.configs["repeater"] and last_message[session_id][1]>=plugin_config.configs["repeater"]):
-            result=last_message[session_id][0]
-            last_message[session_id]=["",0]
-            (await repeater.finish(result)) if result else repeater.finish()
+        if(plugin_config.configs["repeater"] and last_message[session_id][1]==plugin_config.configs["repeater"]):
+            (await repeater.finish(last_message[session_id][0])) if last_message[session_id][0] else repeater.finish()
 
 
     # 喵喵喵
@@ -730,7 +728,8 @@ def result_to_text(arg: dict) -> str:
         for key,value in data.items():
             if(value == "未知" or not value):continue
             if(key == "density"):
-                result += f"{translations[key]}{FDQueryMethods.format_density(value,int(data.get('width', 8)))}\n"
+                width=data.get('width', "8")
+                result += f"{translations[key]}{FDQueryMethods.format_density(value,int(width[1:] if width.startswith('x') else width))}\n"
                 continue
             func=data_parsers.get(key, None)
             if func:
@@ -816,8 +815,8 @@ def get_message_result(message: str) -> str:
         args = message.split("--")
         args = [arg.strip() for arg in args]
         message=args[0]
-        refresh_flag="refresh" in args
-        debug_flag="debug" in args
+        refresh_flag=True if "refresh" in args else None
+        debug_flag=True if "debug" in args else None
         save_flag=True if "save" in args else False if "nosave" in args else None
         local_flag=True if "local" in args else False if "online" in args else None
         if(debug_flag):
@@ -834,7 +833,11 @@ def get_message_result(message: str) -> str:
         result = ""
         # 处理DRAM查询指令（支持大小写不敏感）
         # 创建基础参数字典
-        kwargs = {"refresh": refresh_flag, "debug": debug_flag}
+        kwargs = {}
+        if refresh_flag is not None:
+            kwargs["refresh"] = refresh_flag
+        if debug_flag is not None:
+            kwargs["debug"] = debug_flag
         if save_flag is not None:
             kwargs["save"] = save_flag
         if local_flag is not None:

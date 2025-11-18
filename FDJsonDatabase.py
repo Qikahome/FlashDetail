@@ -156,7 +156,7 @@ class JsonDatabase:
             return list(self.data[table_name].keys())
     
     def clear_table(self, table_name: str) -> bool:
-        """清空指定表
+        """清空指定表中的所有数据
         
         Args:
             table_name: 表名
@@ -170,6 +170,21 @@ class JsonDatabase:
             
             self.data[table_name] = {}
             return self._save_data()
+    
+    def delete_table(self, table_name: str) -> bool:
+        """删除整个表
+        
+        Args:
+            table_name: 表名
+            
+        Returns:
+            是否删除成功
+        """
+        with self.lock:
+            if table_name in self.data:
+                del self.data[table_name]
+                return self._save_data()
+            return False
 
 # 创建全局数据库实例
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data', 'flash_detail_db.json')
@@ -216,7 +231,8 @@ def get_from_database(table_name: str, key: str, debug: bool = False) -> Optiona
     """
     try:
         # 从数据库获取数据
-        result = db_instance.get(table_name, key).copy()
+        result = db_instance.get(table_name, key)
+        if result: result=result.copy()
         
         if debug:
             print(f"从JSON数据库读取: {table_name} - {key} - {result}")

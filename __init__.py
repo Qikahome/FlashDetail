@@ -1,10 +1,13 @@
 import requests
 import re
+import shlex
+from nonebot.exception import FinishedException
 from .FDConfig import config_instance as plugin_config
 from . import FDQueryMethods
+from .FDJsonDatabase import db_instance
 import urllib3
 # 插件版本信息
-PLUGIN_VERSION = "4.0.0"
+PLUGIN_VERSION = "4.3.0"
     
 # 抑制因忽略SSL验证产生的警告
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -40,7 +43,8 @@ FlashDetail插件使用说明
     搜 <关键词> - 搜索相关料号
     查DRAM <料号/ID> - 查询DRAM内存信息
     撤回 - 回复消息并发送此命令可撤回被回复消息（非管理员只能撤回自己的消息）
-    /micron <料号> - 解析Micron料号获取完整料号
+    /micron <料号> - 解析镁光BGA CODE料号获取完整料号
+    /phison <参数> - 解析群联料号
 
     其他命令：
         /status - 显示插件运行状态
@@ -99,9 +103,8 @@ FlashDetail插件使用说明
     # 命令定义
     whitelist_cmd = on_command("whitelist", priority=1, rule=is_enabled_for, block=False)
     blacklist_cmd = on_command("blacklist", priority=1, rule=is_enabled_for, block=False)
-    admin_cmd = on_command("admin", priority=1, rule=is_enabled_for, block=False)  # 管理员管理命令
-    micron_cmd = on_command("micron", priority=1, rule=is_enabled_for, block=False)  # Micron料号解析命令   
-    listened_commands = startswith(("ID", "查", "搜"), ignorecase=True)
+    admin_cmd = on_command("admin", priority=1, rule=is_enabled_for, block=False)  # 管理员管理命令 
+    listened_commands = startswith(("ID", "DRAM", "查", "搜","/micron","/phison"), ignorecase=True)
     MessageHandler = on_message(priority=10, rule=is_enabled_for & listened_commands, block=False)
     help_cmd = on_command("help", priority=1, rule=is_enabled_for, block=False)
     api_cmd = on_command("api", priority=1, rule=is_enabled_for, block=False)
@@ -114,6 +117,7 @@ FlashDetail插件使用说明
     pardon_cmd = on_command("pardon", priority=1, rule=is_enabled_for, block=False)
     refresh_cmd = on_command("refresh", priority=1, rule=is_enabled_for, block=False)
     config_cmd = on_command("config", priority=1, rule=is_enabled_for, block=False)
+    database_cmd = on_command("database", priority=1, rule=is_enabled_for, block=False)
     喵 = on_message(priority=10, rule=is_enabled_for, block=False)
     repeater = on_message(priority=10, rule=is_enabled_for, block=False)
     撤回_cmd = on_message(priority=10, rule=is_enabled_for, block=False)
@@ -405,37 +409,6 @@ FlashDetail插件使用说明
                 plugin_config.save_all()
                 await api_cmd.finish(f"已在flash_extra api地址列表的第{index}个位置插入：{url}")
 
-        
-    # Micron料号解析命令
-    @micron_cmd.handle()
-    async def micron_handler(event: Event, arg: Message = CommandArg()):
-        # 不再需要单独检查用户有效性，因为is_enabled_for规则已经做了检查
-        args=arg.extract_plain_text().strip().split("--")
-        args = [arga.strip() for arga in args]
-        debug = "debug" in args
-        refresh = "refresh" in args
-        pn = args[0]
-        if not pn:
-            await micron_cmd.finish("请输入Micron料号")
-            return
-        
-        # 转换为小写进行处理，确保不区分大小写
-        pn = pn.lower()
-        
-        # 调用parse_micron_pn函数解析料号
-        result = FDQueryMethods.parse_micron_pn(pn, refresh=refresh, debug=debug)
-        
-        # 如果查询成功，调用accept()方法保存到数据库
-        if result.get("result") and "accept" in result:
-            result["accept"]()
-        
-        # 检查并返回part-number
-        if "data" in result and "part-number" in result["data"]:
-            await micron_cmd.finish(f"完整料号: {result['data']['part-number']}")
-        else:
-            error_msg = result.get("error", "解析失败，未找到料号信息")
-            await micron_cmd.finish(error_msg)
-
 
     # 白名单命令
     @whitelist_cmd.handle()
@@ -543,6 +516,141 @@ FlashDetail插件使用说明
         plugin_config.blacklist_user.remove(target_id)
         plugin_config.save_all()
         await pardon_cmd.finish(f"已将用户 {target_id} 从黑名单移除")
+
+    # 数据库管理命令（仅管理员可用）
+    @database_cmd.handle()
+    async def database_handler(event: Event, arg: Message = CommandArg()):
+        user_id = event.get_user_id()
+        if not is_admin(user_id):
+            await database_cmd.finish("该命令仅管理员可用")
+            return
+        
+        args_text = arg.extract_plain_text().strip()
+        if not args_text:
+            await database_cmd.finish("请输入命令参数：/database add/replace/remove <path> <key> <value>")
+            return
+        
+        args = shlex.split(args_text)
+        if len(args) < 2:
+            await database_cmd.finish("参数不足，请输入完整命令格式")
+            return
+        
+        action = args[0].lower()
+        if action not in ["add", "replace", "remove"]:
+            await database_cmd.finish("无效操作，仅支持 add/replace/remove")
+            return
+        
+        path = args[1]
+        path_parts = path.split(".")
+        
+        # 处理特殊情况：remove命令且有3个参数 → 合并后两个为table.pk
+        if action == "remove" and len(args) == 3 and len(path_parts) == 1:
+            table = args[1]
+            pk = args[2]
+        else:
+            table = path_parts[0]
+            pk = ".".join(path_parts[1:]) if len(path_parts) > 1 else None
+        
+        if action in ["add", "replace"]:
+            if not pk:
+                await database_cmd.finish("路径格式错误，add/replace 必须为 <表名.主键>")
+                return
+            
+            if len(args) < 4:
+                await database_cmd.finish(f"{action}命令格式：/database {action} <path> <key> <value>")
+                return
+            
+            key = args[2]
+            value = " ".join(args[3:])
+            
+            try:
+                # 获取现有记录
+                existing_record = db_instance.get(table, pk)
+                new_record = existing_record.copy() if existing_record else {}
+                
+                if action == "add":
+                    if key in new_record:
+                        await database_cmd.finish(f"操作失败：{table}.{pk} 已存在 {key} 字段")
+                        return
+                    new_record[key] = value
+                
+                if action == "replace":
+                    new_record[key] = value
+                
+                # 保存更新后的记录
+                success = db_instance.set(table, pk, new_record)
+                if success:
+                    await database_cmd.finish(f"已成功{action} {table}.{pk} 的 {key} 字段")
+                else:
+                    await database_cmd.finish(f"操作失败：路径不存在")
+            except FinishedException:
+                raise  # 重新抛出，让nonebot处理
+            except Exception as e:
+                await database_cmd.finish(f"操作失败：{str(e)}")
+        
+        elif action == "remove":
+            try:
+                # 1. 删除整个表 (格式: /database remove <table_name>)
+                if not pk and len(args) == 2:
+                    success = db_instance.delete_table(table)
+                    if success:
+                        await database_cmd.finish(f"已成功删除表 {table}")
+                    else:
+                        await database_cmd.finish(f"操作失败：表 {table} 不存在")
+                    return
+                
+                # 2. 没有 pk 但有其他参数 → 格式错误
+                if not pk:
+                    await database_cmd.finish("参数格式错误，删除表应为 /database remove <表名>")
+                    return
+                
+                # 3. 删除整个记录 (格式: /database remove <table.pk> 或 /database remove <table.pk> *)
+                if len(args) == 2 or (len(args) >= 3 and args[2] == "*"):
+                    success = db_instance.delete(table, pk)
+                    if success:
+                        await database_cmd.finish(f"已成功删除记录 {table}.{pk}")
+                    else:
+                        await database_cmd.finish(f"操作失败：记录 {table}.{pk} 不存在")
+                    return
+                
+                # 4. 删除特定字段 (格式: /database remove <table.pk> <field>)
+                if len(args) < 3:
+                    await database_cmd.finish("remove命令格式：/database remove <path> <key>")
+                    return
+                
+                key = args[2]
+                
+                # 获取现有记录
+                existing_record = db_instance.get(table, pk)
+                if not existing_record:
+                    await database_cmd.finish(f"操作失败：{table}.{pk} 不存在")
+                    return
+                
+                if key not in existing_record:
+                    await database_cmd.finish(f"操作失败：{table}.{pk} 不存在 {key} 字段")
+                    return
+                
+                # 删除字段
+                del existing_record[key]
+                
+                if existing_record:
+                    # 保存更新后的记录
+                    success = db_instance.set(table, pk, existing_record)
+                    if success:
+                        await database_cmd.finish(f"已成功删除 {table}.{pk} 的 {key} 字段")
+                    else:
+                        await database_cmd.finish(f"操作失败：保存失败")
+                else:
+                    # 删除空记录
+                    success = db_instance.delete(table, pk)
+                    if success:
+                        await database_cmd.finish(f"已成功删除 {table}.{pk} 的 {key} 字段，因记录为空已删除整个记录")
+                    else:
+                        await database_cmd.finish(f"操作失败：删除字段失败")
+            except FinishedException:
+                raise  # 重新抛出，让nonebot处理
+            except Exception as e:
+                await database_cmd.finish(f"操作失败：{str(e)}")
 
     def handle_list_command(list_type: str, args: list) -> str:
         """处理黑白名单命令"""
@@ -716,12 +824,12 @@ translations = {
     "vendor_code": "厂商代码：","version": "版本：","width": "位宽："
 }
 
-data_parsers = {"classification": classification, "availableID": flashId}
+data_parsers = {"classification": classification, "flashId": flashId}
 
 
-def result_to_text(arg: dict) -> str:
+def result_to_text(arg: dict, debug: bool=False, **kwargs) -> str:  
     if not arg.get("result", False):
-        return f"未能查询到结果：{arg.get('error', '未知错误')}"
+        return f"未能查询到结果：{arg.get('error', '未知错误' if not debug else str(arg))}"
     result = ""
     data=arg.get("data", {})
     if isinstance(data,dict):
@@ -748,11 +856,11 @@ def all_numbers_alpha(string: str) -> bool:
     # 使用正则表达式判断字符是否在0-9A-Za-z_/:-范围内
     return string and all(re.match(r'^[0-9A-Za-z_/:\-]$', c) for c in string)
 
-def ID(arg: str, refresh: bool=False,debug: bool=False,save: bool=False,local: bool=True,url:str|None=None) -> str:
+def ID(arg: str, **kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
-    raw_result=FDQueryMethods.get_detail_from_ID(arg=arg, refresh=refresh,debug=debug,save=save,local=local,url=url)   
-    result = result_to_text(raw_result)
+    raw_result=FDQueryMethods.get_detail_from_ID(arg=arg, **kwargs)   
+    result = result_to_text(raw_result, **kwargs)
     if result and "accept" in raw_result:
         raw_result["accept"]()
     if not result and len(arg)>3:
@@ -760,34 +868,36 @@ def ID(arg: str, refresh: bool=False,debug: bool=False,save: bool=False,local: b
             result = "无结果"
     return result
 
-def 查(arg: str, retry: bool=True, refresh: bool=False,debug: bool=False,save: bool=False,url:str|None=None) -> str:
+def 查(arg: str, retry: bool=True, **kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
-    raw_result=FDQueryMethods.get_detail(arg=arg, refresh=refresh,debug=debug,save=save,url=url)
-    result = result_to_text(raw_result)
+    raw_result=FDQueryMethods.get_detail(arg=arg, **kwargs)
+    result = result_to_text(raw_result, **kwargs)
     if result and "accept" in raw_result:
         raw_result["accept"]()
     if not result and retry:
-        search_result = FDQueryMethods.search(arg=arg,debug=debug,url=url)
+        search_result = FDQueryMethods.search(arg=arg, **kwargs)
         if search_result.get("result", False) and search_result.get("data", []):
-            result = f"可能的料号：{search_result["data"][0].split()[-1]}\n{查(search_result["data"][0].split()[-1], False,refresh,debug,save,url)}"
+            result = f"可能的料号：{search_result["data"][0].split()[-1]}\n{查(search_result["data"][0].split()[-1], False,**kwargs)}"
     if not result and len(arg.strip())==5:
-        micron_result=FDQueryMethods.parse_micron_pn(arg.strip(), refresh=refresh,debug=debug)        
+        micron_kwargs=kwargs.copy()
+        micron_kwargs["url"]=None
+        micron_result=FDQueryMethods.parse_micron_pn(arg.strip(), **micron_kwargs)        
         if micron_result.get("result", False) and micron_result.get("data", {}).get("part-number", ""):
             if "accept" in micron_result:
                 micron_result["accept"]()
-            result = f"镁光料号：{micron_result.get('data', {}).get('part-number', '')}\n{查(micron_result.get('data', {}).get('part-number', ''), False,refresh,debug,save,url)}"
+            result = f"镁光料号：{micron_result.get('data', {}).get('part-number', '')}\n{查(micron_result.get('data', {}).get('part-number', ''), False,**kwargs)}"
         else: result = f"未知料号：{micron_result.get('error', '未知错误')}"
     if not result:
         if all_numbers_alpha(arg):
             result = "无结果"
     return result
 
-def 搜(arg: str,debug: bool=False,count: int=10,url:str|None=None) -> str:
+def 搜(arg: str,**kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
-    raw_result = FDQueryMethods.search(arg,debug,count,url)
-    result = result_to_text(raw_result)
+    raw_result = FDQueryMethods.search(arg,**kwargs)
+    result = result_to_text(raw_result, **kwargs)
     if not result:
         if all_numbers_alpha(arg):
             result = "无结果"
@@ -795,16 +905,50 @@ def 搜(arg: str,debug: bool=False,count: int=10,url:str|None=None) -> str:
 
 
 
-def 查DRAM(arg: str, refresh: bool=False,debug: bool=False,save: bool=False,url:str|None=None) -> str:
+def 查DRAM(arg: str, **kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
-    raw_result=FDQueryMethods.get_dram_detail(arg=arg, refresh=refresh,debug=debug,save=save,url=url)
-    result = result_to_text(raw_result)
+    raw_result=FDQueryMethods.get_dram_detail(arg=arg, **kwargs)
+    result = result_to_text(raw_result, **kwargs)
     if result and "accept" in raw_result:
         raw_result["accept"]()
     if not result:
         result = "无结果"
     return result
+
+
+
+def micron_handler(arg: str, debug: bool=False, **kwargs):
+    # 转换为小写进行处理，确保不区分大小写
+    arg = arg.lower()
+    
+    # 调用parse_micron_pn函数解析料号
+    result = FDQueryMethods.parse_micron_pn(arg, **kwargs)
+    
+    # 如果查询成功，调用accept()方法保存到数据库
+    if result.get("result", False) and "accept" in result:
+        result["accept"]()
+    
+    # 检查并返回part-number
+    if "data" in result :
+        return f"完整料号: {result['data']['part-number']}"
+    else:
+        error_msg = result.get("error", "解析失败，未找到料号信息" if not debug else str(result))
+        return error_msg
+
+
+def phison_handler(arg: str, debug: bool=False, **kwargs):
+    # 转换为大写进行处理，确保不区分大小写
+    arg = arg.upper()
+    
+    # 调用parse_phison_pn函数解析料号
+    raw_result = FDQueryMethods.parse_phison_pn(arg, **kwargs)
+    
+    result=result_to_text(raw_result, **kwargs)
+    if not result :
+        result = raw_result.get("error", "无结果" if not debug else str(raw_result))
+    return result
+
 
 def get_message_result(message: str) -> str:
     try:
@@ -844,7 +988,14 @@ def get_message_result(message: str) -> str:
             kwargs["local"] = local_flag
         if url is not None:
             kwargs["url"] = url
-        if message.lower().startswith("查dram"):
+
+        if message.lower().startswith("/micron"):
+            result = micron_handler(message[7:].strip(), **kwargs)
+        elif message.lower().startswith("/phison"):
+            result = phison_handler(message[7:].strip(), **kwargs)
+        elif message.lower().startswith("dram"):
+            result = 查DRAM(message[5:].strip(), **kwargs)
+        elif message.lower().startswith("查dram"):
             result = 查DRAM(message[6:].strip(), **kwargs)
         elif message.lower().startswith(("id")):
             result = ID(message[2:].strip(), **kwargs)
@@ -854,10 +1005,10 @@ def get_message_result(message: str) -> str:
             result = 搜(message[1:].strip(),**kwargs)
         else:
             result = "未知命令(请使用/help获取帮助)"
-        return result
+        output = False if "nooutput" in args else True
+        return result if output else ""
     except Exception as e:
         return f"处理错误：{str(e)}"
-
 
 def instance():
     print("命令行模式：支持 查/搜/ID/查DRAM 指令，也可使用 /help 查看帮助（exit退出）")
@@ -879,3 +1030,5 @@ if __name__ == "__main__":
         plugin_config = Config.from_file()
     instance()
 
+# reload
+# reload

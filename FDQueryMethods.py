@@ -259,7 +259,7 @@ def search(arg: str, debug: bool=False, count: int=10, url:str|None=None, local:
     
     # 处理最终结果
     return {
-        "result": True,
+        "result": bool(combined_results),
         "data": combined_results
     }
 
@@ -453,9 +453,9 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 "D7": "4GB",   
                 "DE": "8GB",      
                 "3A": "16GB",  "5A": "16GB",    
-                "3C": "32GB",  "5C": "32GB",  
-                "3E": "64GB", 
-                "48": "128GB", "5E": "128GB", "7E": "128GB", "89": "128GB", 
+                "3C": "32GB",  "4C": "32GB", "5C": "64GB",  
+                "3E": "64GB", "5E": "64GB", "7E": "64GB",
+                "48": "128GB",  "89": "128GB", 
                 "58": "160GB",
                 "73": "170.625GB",
                 "49": "256GB", 
@@ -496,13 +496,13 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 data["vendor"]="海力士"
                 data["density"] = DENSITY_MAPPING_TOGGLE.get(id_str[2:4], "未知")
                 data["die"],data["cellLevel"]=get_die_cellLevel(id_str)
-                data["density"]=total_density(data["density"],data["die"])
+                data["density"]=total_density(data["density"],data["die"]) #idk
                 data["pageSize"] = ["2","4","8","16"][int(id_str[7],16)%4]
                 data["plane"] = ["1","2","4","8"][int(id_str[4],16)%4]
                 # data["plane"] = str(int(data["totalPlane"])//int(data["die"]))
-                data["processNode"] = {"42":"32nm","4A":"16nm","50":"14nm",
+                data["processNode"] = {"40":"32nm","C4":"20nm","4A":"16nm","50":"14nm",
                 "60":"3DV1","70":"3DV2","80":"3DV3","90":"3DV4","A0":"3DV5",
-                "B0":"3DV6","C0":"3DV7","D0":"3DV8"}.get(id_str[10:12],"未知")
+                "B0":"3DV6","C0":"3DV7","D0":"3DV8"}.get(id_str[10]+"0"if id_str[11]=="2"else id_str[10:12],"未知")
             # onfi阵营 
             elif id_str.startswith(("2C","89")):
                 result["result"] = True
@@ -516,9 +516,9 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                     "A1":"3D1 32L(B05)" if id_str[2:4]=="84" else "3D2 64L(B16)",
                     "A6":{"TLC":"3D2 64L(B17)","QLC":"3D4 144L(N38A)"}.get(data["cellLevel"],"3D2 64L(B17)"),
                     "A2":"3D3 96L(B27A)",
-                    "E6":"3D3 96L(B27B)",
+                    "E6":"3D3 96L(B27C)" if id_str[-1]=="4" else "3D3 96L(B27B)",
                     "C2":"3D4 144L(N38B)",
-                    "C6":"3D3 96L(N28A)",
+                    "C6":"3D3 96L(N28A)" if id_str[4]=="1" else "3D4 144L(N38A)",
                     "E5":"3D4 144L(B36R)",
                     "EA":{"10":"3D4 144L(B37R)","30":{"TLC":"3D5 176L(B47R)","QLC":"3D5 176L(N48R)"}.get(data["cellLevel"],"3D5 176L"),
                     "34":"3D5 176L(B47T)"}.get(id_str[10::],"3D5 176L"),
@@ -609,16 +609,16 @@ def parse_micron_pn(arg: str, refresh: bool = False, debug: bool=False,save: boo
         if local is not False: pass
         # 访问micron-online接口获取完整part-number
         if local is not True and not result:
-            micron_response = get_from_micron(pn, debug) 
+            micron_response = get_from_micron(pn, debug)
             # 尝试解析JSON响应
             response_data = json.loads(micron_response.text)
             if debug:
                 print(response_data)
             # 确保返回的数据结构包含必要字段
-            result["data"]=response_data.get("details",[{}])[0]
+            result["data"]=(response_data.get("details",[{}]) or [{}])[0]
             result["result"]=bool(result["data"])
         # 添加accept方法，仅在调用时保存数据到数据库
-        if result.get("result", True) and save:  # 如果没有result字段，默认为True
+        if result.get("result", False) and save:  # 如果没有result字段，默认为True
             def accept_func():
                 save_to_database('micron_pn_decode', pn.lower(), result,debug)
                 # 移除accept方法，避免重复调用
@@ -663,7 +663,7 @@ def get_dram_detail(arg: str, refresh: bool = False, debug: bool=False,save: boo
     
     result={}
     try:   
-        pn = arg.strip()
+        pn = arg.strip().upper()
         # 处理5位DRAM料号特殊逻辑
         if len(pn) == 5:
             micron_json = parse_micron_pn(pn, refresh)
@@ -677,7 +677,7 @@ def get_dram_detail(arg: str, refresh: bool = False, debug: bool=False,save: boo
             micron_json["accept"]()
         else:
             full_pn = pn
-        
+
         # 如果不强制刷新，先尝试从数据库读取
         if not refresh:
             # 使用full_pn.lower()确保不区分大小写查询
@@ -706,16 +706,14 @@ def get_dram_detail(arg: str, refresh: bool = False, debug: bool=False,save: boo
 
             # 自动将detail中所有键名转换为小写并放入data对象
             detail = resp_json.get("detail", {})
-            # 先创建小写键名的字典
-            data = {key.lower(): value for key, value in detail.items()}
-            # 然后添加vendor字段
-            data["vendor"] = resp_json.get("Vendor", "未知")
+            data={"partNumber":full_pn,"vendor":resp_json.get("Vendor", "未知"),**{key.lower(): value for key, value in detail.items()}}
                 
             result = {
                 "result": True,
                 "data": data
             }
-        
+
+            
         # 添加accept方法，仅在调用时保存数据到数据库
         if save is None and result.get("result"):
             def accept_func():
@@ -760,12 +758,12 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
             result = {"result": False, "error": "Phison料号长度必须为10位"} 
             result["accept"] = lambda: None
             return result
-        data={}
+        data={"partNumber":pn,"type":"NAND","width":"x8"}
         data["vendor"]="群联-"+{"T":"东芝","S":"恺侠","I":"镁光","K":"镁光","H":"海力士",
                                 "D":"闪迪","C":"长江存储","N":"英特尔"}.get(pn[0],"未知")
         data["package"]={"A":"BGA132","P":"BGA152","C":"BGA272","O":"SAT-LGA60",
                         "K":"SAT-LGA60","R":"SAT-LGA60","F":"TSOP48","T":"TSOP48",
-                        "G":"TSOP48","2":"BGA154"}.get(pn[1],"未知")
+                        "G":"TSOP48","X":"SAT-LGA60","2":"BGA154"}.get(pn[1],"未知")
         data["classification"]={}
         data["classification"]["ce"],data["die"]={"1":(1,1),"2":(2,2),"5":(2,2),"6":(2,4),
                     "7":(4,4),"8":(4,8),"A":(4,16),"B":(8,8),
@@ -774,27 +772,37 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
         data["density"]={"7":"16GB","8":"32GB","9":"64GB","A":"128GB",
                         "B":"256GB","E":"192GB","H":"512GB","I":"1024GB",
                         "J":"2048GB"}.get(pn[3],"未知")
-        def get_process_node(pn: str) -> str:
+        def get_process_node(pn: str) -> tuple[str,str]:
             """根据Phison料号获取制程"""
             if pn[0]=="T" or pn[0]=="S" or pn[0]=="D": #闪迪/恺侠
-                return {"H":"24nm MLC2p(D2H)","P":"1ynm MLC4p(DFK)","R":"1znm TLC(THL)",
-                        "S":"1znm MLC2P(DDL)","U":"1znm MLC4p(DFL)",#2D
-                        "V":"BiCS2","I":"BiCS3","W":"BiCS4","X":"BiCS4.5",
-                        "Y":"BiCS5","1":"BiCS6"}.get(pn[8],"未知")
+                return {"H":("24nm 2p(D2H)","MLC"),"P":("1ynm 4p(DFK)","MLC"),"R":("1znm(THL)","TLC"),
+                        "S":("1znm 2p(DDL)","MLC"),"U":("1znm 4p(DFL)","MLC"),#2D
+                        "V":("BiCS2","TLC"),"I":("BiCS3","TLC"),"W":("BiCS4","TLC"),"X":("BiCS4.5","TLC"),
+                        "Y":("BiCS5","TLC"),"1":("BiCS6","TLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="H":#海力士
-                return {"P":"16nm","X":"3DV7"}.get(pn[8],"未知(海力士料号缺乏，希望大家多多提供)")
+                return {"P":("16nm","MLC"),"X":("3DV7","TLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="I" or pn[0]=="K" or pn[0]=="N":#IM
-                return {"N":"20nm MLC(L85)","P":"16nm MLC(L95)",#2D
-                        "O":"L06/B16/N18","V":"B27A","I":"B27B","X":"B37R",
-                        "Y":"B47R"}.get(pn[8],"未知")
+                return {"N":("20nm(L85)","MLC"),"P":("16nm(L95)","MLC"),#2D
+                        "O":("L06/B16/N18","未知"),"V":("B27A","TLC"),"I":("B27B","TLC"),"X":("B37R","TLC"),
+                        "Y":("B47R","TLC"),"Z":("N48R","QLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="C":
-                return {"O":"JGS"}.get(pn[8],"未知(长江存储料号缺乏，希望大家多多提供)")
+                return {"O":("JGS","TLC")}.get(pn[8],("未知(长江存储料号缺乏，希望大家多多提供)","未知"))
             else:
-                return "未知"
+                return ("未知","未知")
         
-        data["processNode"]=get_process_node(pn)
+        data["processNode"],data["cellLevel"]=get_process_node(pn)
         return {"result": True, "data": data, "accept": lambda: None}
     except Exception as e:
         result = {"result": False, "error": f"错误：{str(e)}"}
         result["accept"] = lambda: None
         return result
+
+def is_dram(pn:str) -> bool:
+    """判断是否为DRAM料号"""
+    pn=pn.upper()
+    return pn.startswith("NT") or pn.startswith("H5T") or (pn.startswith("D") and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")  
+
+def is_phison(pn:str,online:bool=False,**kwargs) -> bool:
+    """判断是否为Phison料号"""
+    pn=pn.upper()
+    return len(pn)==10 and pn[4] == "G" and  pn[0] in ["T","S","I","H","D","C","N"]

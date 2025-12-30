@@ -827,9 +827,9 @@ translations = {
 data_parsers = {"classification": classification, "flashId": flashId}
 
 
-def result_to_text(arg: dict, debug: bool=False, **kwargs) -> str:  
+def result_to_text(arg: dict, debug: bool=False, **kwargs) -> str:
     if not arg.get("result", False):
-        return f"未能查询到结果：{arg.get('error', '未知错误' if not debug else str(arg))}"
+        return f"未能查询到结果：{arg.get('error', '未知错误')+"" if not debug else str(arg)}"
     result = ""
     data=arg.get("data", {})
     if isinstance(data,dict):
@@ -871,6 +871,14 @@ def ID(arg: str, **kwargs) -> str:
 def 查(arg: str, retry: bool=True, **kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
+    if FDQueryMethods.is_dram(arg):
+        dram=查DRAM(arg, **kwargs)
+        if dram and not dram.startswith("无结果"):
+            return dram
+    if FDQueryMethods.is_phison(arg,**kwargs):
+        phison=phison_handler(arg, **kwargs)
+        if phison and not phison.startswith("无结果"):
+            return phison
     raw_result=FDQueryMethods.get_detail(arg=arg, **kwargs)
     result = result_to_text(raw_result, **kwargs)
     if result and "accept" in raw_result:
@@ -882,12 +890,11 @@ def 查(arg: str, retry: bool=True, **kwargs) -> str:
     if not result and len(arg.strip())==5:
         micron_kwargs=kwargs.copy()
         micron_kwargs["url"]=None
-        micron_result=FDQueryMethods.parse_micron_pn(arg.strip(), **micron_kwargs)        
+        micron_result=FDQueryMethods.parse_micron_pn(arg.strip(), **micron_kwargs)
         if micron_result.get("result", False) and micron_result.get("data", {}).get("part-number", ""):
             if "accept" in micron_result:
                 micron_result["accept"]()
             result = f"镁光料号：{micron_result.get('data', {}).get('part-number', '')}\n{查(micron_result.get('data', {}).get('part-number', ''), False,**kwargs)}"
-        else: result = f"未知料号：{micron_result.get('error', '未知错误')}"
     if not result:
         if all_numbers_alpha(arg):
             result = "无结果"
@@ -905,15 +912,15 @@ def 搜(arg: str,**kwargs) -> str:
 
 
 
-def 查DRAM(arg: str, **kwargs) -> str:
+def 查DRAM(arg: str, debug: bool=False, **kwargs) -> str:
     # 转换为小写进行处理，确保不区分大小写
     arg = arg.lower()
-    raw_result=FDQueryMethods.get_dram_detail(arg=arg, **kwargs)
-    result = result_to_text(raw_result, **kwargs)
+    raw_result=FDQueryMethods.get_dram_detail(arg=arg, debug=debug, **kwargs)
+    result = result_to_text(raw_result, debug=debug, **kwargs)
     if result and "accept" in raw_result:
         raw_result["accept"]()
     if not result:
-        result = "无结果"
+        result = "无结果" if not debug else f"无结果：{str(raw_result)}"
     return result
 
 
@@ -946,7 +953,7 @@ def phison_handler(arg: str, debug: bool=False, **kwargs):
     
     result=result_to_text(raw_result, **kwargs)
     if not result :
-        result = raw_result.get("error", "无结果" if not debug else str(raw_result))
+        result = raw_result.get("error", "无结果" if not debug else f"无结果：{str(raw_result)}")
     return result
 
 
@@ -1030,5 +1037,6 @@ if __name__ == "__main__":
         plugin_config = Config.from_file()
     instance()
 
+# reload
 # reload
 # reload

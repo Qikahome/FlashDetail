@@ -763,7 +763,7 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
                                 "D":"闪迪","C":"长江存储","N":"英特尔"}.get(pn[0],"未知")
         data["package"]={"A":"BGA132","P":"BGA152","C":"BGA272","O":"SAT-LGA60",
                         "K":"SAT-LGA60","R":"SAT-LGA60","F":"TSOP48","T":"TSOP48",
-                        "G":"TSOP48","X":"SAT-LGA60","2":"BGA154"}.get(pn[1],"未知")
+                        "G":"TSOP48","X":"SAT-LGA60","1":"BGA152","2":"BGA154"}.get(pn[1],"未知")
         data["classification"]={}
         data["classification"]["ce"],data["die"]={"1":(1,1),"2":(2,2),"5":(2,2),"6":(2,4),
                     "7":(4,4),"8":(4,8),"A":(4,16),"B":(8,8),

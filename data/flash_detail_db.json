@@ -14880,10 +14880,15 @@
       }
     },
     "kfcv50": {
-      "data": "{processNode:Chicken,vendor:肯德基}"
-    },
-    "kfcv50.data": {
-      "vendor": "肯德基"
+      "data": {
+        "vendor": "肯德基",
+        "processNode": "Chicken",
+        "blockSize": "20g",
+        "availablePn": [
+          "上校鸡块",
+          "吮指原味鸡"
+        ]
+      }
     },
     "h25t3tcg8c": {
       "data": {
@@ -16458,6 +16463,3736 @@
         },
         "rawVendor": "ymtc"
       }
+    },
+    "29f32b08mcmf3": {
+      "data": {
+        "partNumber": "29F32B08MCMF3",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "20 nm",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "nw839": {
+      "data": {
+        "partNumber": "NW839",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1.125Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 3,
+          "ch": 2,
+          "rb": "未知",
+          "die": 3
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "速度等级": "NV-DDR2 TM8 533MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "美光料号": "MT29F1T208ECCBBJ4-37:B"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1179648,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "k9okgy8s7c": {
+      "data": {
+        "partNumber": "K9OKGY8S7C",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "3D",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 8,
+          "ch": "未知",
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (3V~3.6V), VccQ: 1.8V (1.65V~1.95V)",
+        "generation": "4",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "2.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [
+          "EC1A881F70C8"
+        ],
+        "controller": [
+          "SM3268AB",
+          "SM3281AB",
+          "SM2258",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E"
+        ],
+        "remark": "Toggle",
+        "rawDensity": 1048576,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "pf29f64b08ncmf3": {
+      "data": {
+        "partNumber": "PF29F64B08NCMF3",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "20 nm",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "晶圆": "否",
+          "无铅": "是"
+        },
+        "flashId": [
+          "8984643CA500"
+        ],
+        "controller": [
+          "SM2244LT",
+          "SM2246EN",
+          "SM2246XT",
+          "JMF608",
+          "JMF667",
+          "JMF670H",
+          "SF2281",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS902E",
+          "IS903",
+          "IS916EN",
+          "IS916",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "h270fgdpem5r": {
+      "data": {
+        "partNumber": "H270FGDPEM5R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "未知",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "否"
+        },
+        "package": "BGA-132",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": false
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "th58ljt0t24bs8c": {
+      "data": {
+        "partNumber": "TH58LJT0T24BS8C",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "29f1t08emhaf": {
+      "data": {
+        "partNumber": "29F1T08EMHAF",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "20 nm",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "mt29f1t08emhaf": {
+      "data": {
+        "partNumber": "MT29F1T08EMHAF",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "B16A 3D",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V (2.50–3.60V), VccQ: 1.2V (1.14–1.26) or 1.8V (1.70–1.95V)",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [
+          "2CA48832A100",
+          "2CA40832A100"
+        ],
+        "controller": [
+          "SM2258",
+          "SM2258XT",
+          "SM2259",
+          "MAS0902",
+          "MAS1102",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "nx805": {
+      "data": {
+        "partNumber": "NX805",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "3D B16A",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V (2.50–3.60V), VccQ: 1.2V (1.14–1.26) or 1.8V (1.70–1.95V)",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "工程样品",
+          "速度等级": "NV-DDR3 TM9 666MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "特性": "FortisFlash",
+          "设计修订": "A",
+          "美光料号": "MT29F256G08EBHAFJ4-3RES:A"
+        },
+        "flashId": [
+          "2CA40832A100",
+          "2CA40830A100",
+          "2CA40832A104",
+          "2CA40832A108",
+          "2CA48832A100",
+          "2C84643CA904",
+          "2CC48932A100",
+          "2CD48932A600",
+          "2CD48932A601",
+          "B5A40832A1"
+        ],
+        "controller": [
+          "SM3268AB",
+          "SM3270AB",
+          "SM3270AC",
+          "SM3271AB",
+          "SM3280AB",
+          "SM3280BA",
+          "SM3280BB",
+          "SM3281AB",
+          "SM3281BA",
+          "SM3281BB",
+          "SM3282BB",
+          "SM2258XT",
+          "SM2258",
+          "SM2259XT2",
+          "SM2259",
+          "SM2262EN",
+          "MAS0902",
+          "MAS1102",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS903",
+          "IS917",
+          "PS3111",
+          "INIC6081"
+        ],
+        "remark": "",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "h27q118pqa2r": {
+      "data": {
+        "partNumber": "H27Q118PQA2R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "FBGA-316",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h27q1t8pqa2r": {
+      "data": {
+        "partNumber": "H27Q1T8PQA2R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "FBGA-316",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [
+          "AD5C282A0190"
+        ],
+        "controller": [
+          "SM2263XT",
+          "CBM2199",
+          "CBM2199E"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "k9cmgy8j5b": {
+      "data": {
+        "partNumber": "K9CMGY8J5B",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": "未知",
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "未知",
+        "generation": "3",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "2.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 2097152,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "tc58ljg8t24ta0d": {
+      "data": {
+        "partNumber": "TC58LJG8T24TA0D",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": "未知",
+          "die": 1
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "TSOP48",
+        "extraInfo": {
+          "多晶片": "否",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [
+          "983C98B3F6E3",
+          "983C98B3F663",
+          "983C98B3F66B",
+          "983C98B376E3",
+          "983C98B3766B",
+          "983C98B37663",
+          "983E98B376E3"
+        ],
+        "controller": [
+          "SM3265AB",
+          "SM3265AC",
+          "SM3271AB",
+          "SM3281AB",
+          "SM3281BB",
+          "SM2258XT",
+          "SM2259XT",
+          "SM2258",
+          "SM2259XT2",
+          "SM2263EN",
+          "SM2263XT",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "PS3111",
+          "INIC6081"
+        ],
+        "remark": "",
+        "rawDensity": 262144,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "29f01t2ancmg4": {
+      "data": {
+        "partNumber": "29F01T2ANCMG4",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "3D1 32L",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "4",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "29f1t08cuebb": {
+      "data": {
+        "partNumber": "29F1T08CUEBB",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "72 nm",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": 1,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": false
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "mt查29f1t08cuebb": {
+      "data": {
+        "partNumber": "MT查29F1T08CUEBB",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": "未知",
+          "die": 16
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f1t08cuebb": {
+      "data": {
+        "partNumber": "MT29F1T08CUEBB",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "nw572": {
+      "data": {
+        "partNumber": "NW572",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball LBGA, 14 x 18 x 1.4 (8DP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "速度等级": "NV-DDR TM4 166MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "美光料号": "MT29F1T08CUEBBH8-12:B"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "nx507": {
+      "data": {
+        "partNumber": "NX507",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball LBGA, 14 x 18 x 1.4 (8DP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "工程样品",
+          "速度等级": "NV-DDR TM4 166MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "美光料号": "MT29F1T08CUEBBH8-12ES:B"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f1t08cuecb": {
+      "data": {
+        "partNumber": "MT29F1T08CUECB",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V) or 1.8V (1.70–1.95V)",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [
+          "2CA4E554A900"
+        ],
+        "controller": [
+          "SM2244LT",
+          "SM2246EN",
+          "JMF670H",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "IS902E",
+          "IS903",
+          "IS916EN",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "29f32b08ncme2": {
+      "data": {
+        "partNumber": "29F32B08NCME2",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "25 nm",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "js29f64g08jcnd1": {
+      "data": {
+        "partNumber": "JS29F64G08JCND1",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "34 nm",
+        "cellLevel": "SLC",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "TSOP48",
+        "extraInfo": {
+          "晶圆": "否",
+          "无铅": "是"
+        },
+        "flashId": [
+          "89482026A900",
+          "896821A6A900"
+        ],
+        "controller": [
+          "SM2244LT",
+          "SM2246EN",
+          "SM2250",
+          "JMF616",
+          "CBM2092",
+          "CBM2093",
+          "CBM2093P",
+          "CBM2095",
+          "CBM2096P",
+          "CBM2096",
+          "CBM2098S",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2099S",
+          "CBM2199",
+          "CBM2199S",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS902E",
+          "IS902",
+          "IS916EN",
+          "IS916",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 65536,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "29f64g08jcnd1": {
+      "data": {
+        "partNumber": "29F64G08JCND1",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "34 nm",
+        "cellLevel": "SLC",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 65536,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "mt29f32b08mcmf2": {
+      "data": {
+        "partNumber": "MT29F32B08MCMF2",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f256g08mcmf2": {
+      "data": {
+        "partNumber": "MT29F256G08MCMF2",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 3,
+          "ch": 2,
+          "rb": "未知",
+          "die": 3
+        },
+        "voltage": "未知",
+        "generation": "6",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f1t08cfebb": {
+      "data": {
+        "partNumber": "MT29F1T08CFEBB",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f64g08cbaaa": {
+      "data": {
+        "partNumber": "MT29F64G08CBAAA",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "28nm L74A",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 3.3V (2.70–3.60V)",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [
+          "2CA805CBA900",
+          "2C68044BA900",
+          "2C88044BA900",
+          "2C8824CB8900",
+          "2C8824CB4600",
+          "2C88044B4600",
+          "2C8824498900",
+          "2C88044B2800",
+          "2C8824492800",
+          "2CA805CB2800",
+          "2C88244BA900",
+          "2C88054BA9",
+          "2C88044BA906"
+        ],
+        "controller": [
+          "SM3254AE",
+          "SM3255AA",
+          "SM3255AB",
+          "SM3255ENA1",
+          "SM3255ENAA",
+          "SM3257AA",
+          "SM3257ENAA",
+          "SM3257ENAA_8CE",
+          "SM3257ENBA",
+          "SM3257ENBB",
+          "SM3257ENLT",
+          "SM3259AA",
+          "SM3259AB",
+          "SM3260AA",
+          "SM3260AB",
+          "SM3260AD",
+          "SM3261AB",
+          "SM3263AA",
+          "SM3263AB",
+          "SM3267AA",
+          "SM3267AB",
+          "SM3267AB_COB",
+          "SM3267AC",
+          "SM3267AE",
+          "SM3268AA",
+          "SM3268AB",
+          "SM3269AA",
+          "SM3269AA_COB",
+          "SM3270AA",
+          "SM3270AB",
+          "SM3270AC",
+          "SM3271AB",
+          "SM2242",
+          "SM2244LT",
+          "SM2246EN",
+          "SM2250",
+          "JMF606",
+          "JMF608",
+          "JMF612",
+          "JMF616",
+          "JMF667",
+          "JMF670H",
+          "SF2141",
+          "SF2181",
+          "SF2281",
+          "SF2282",
+          "SF2382",
+          "SF2241",
+          "SF2581",
+          "AU6987(AN)",
+          "AU6989SN",
+          "AU6989SN-G",
+          "AU6989SNL",
+          "AU6989SNL-B",
+          "AU6989SN-GTA",
+          "AU6989SN-GTB",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2093P",
+          "CBM2095",
+          "CBM2096P",
+          "CBM2096",
+          "CBM2093",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2098S",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2099S",
+          "CBM2199",
+          "CBM2199S",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS902E",
+          "IS902",
+          "IS903",
+          "IS916EN",
+          "IS916",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 65536,
+        "interface": {
+          "async": true,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f64g08ce": {
+      "data": {
+        "partNumber": "MT29F64G08CE",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 65536,
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f64g08cd": {
+      "data": {
+        "partNumber": "MT29F64G08CD",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 65536,
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f64g08cc": {
+      "data": {
+        "partNumber": "MT29F64G08CC",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 3,
+          "ch": 2,
+          "rb": "未知",
+          "die": 3
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 65536,
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f64g08ba": {
+      "data": {
+        "partNumber": "MT29F64G08BA",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "64Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 0,
+          "ch": 1,
+          "rb": 0,
+          "die": 1
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 65536,
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "ta7a055aiv": {
+      "data": {
+        "partNumber": "TA7A055AIV",
+        "vendor": "群联",
+        "type": "NAND",
+        "density": "2Mb",
+        "deviceWidth": "x8",
+        "processNode": "BICS3",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": "未知",
+          "rb": "未知",
+          "die": 4
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA132",
+        "extraInfo": {
+          "制造商": "铠侠"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 2,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "phison"
+      }
+    },
+    "nw956": {
+      "data": {
+        "partNumber": "NW956",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "B27A",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V (2.50–3.60V), VccQ: 1.2V (1.14–1.26) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "特性": "FortisMax",
+          "设计修订": "B",
+          "美光料号": "MT29F2T08EMHBFJ4-T:B"
+        },
+        "flashId": [
+          "2CC40832A200",
+          "2CC41832A200"
+        ],
+        "controller": [
+          "SM2258",
+          "SM2259XT",
+          "SM2259",
+          "SM2263XT",
+          "MAS0902",
+          "MAS1102",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2199",
+          "CBM2199E"
+        ],
+        "remark": "",
+        "rawDensity": 2097152,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "ymn9tc1dc6c": {
+      "data": {
+        "partNumber": "YMN9TC1DC6C",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": [],
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "ymn09tc1dc6c": {
+      "data": {
+        "partNumber": "YMN09TC1DC6C",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc=2.35~3.6V; VccQ=1.2V",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": [],
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "ymn09tc1b1dc6c": {
+      "data": {
+        "partNumber": "YMN09TC1B1DC6C",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc=2.35~3.6V; VccQ=1.2V",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA-132; 12 x 18 x 1.x",
+        "extraInfo": {
+          "操作温度": "0°C ~ 70°C",
+          "速度等级": "ONFI 4.0; Max Speed=1600MB/s (UNOFFICIAL)"
+        },
+        "flashId": [
+          "9BC428492000"
+        ],
+        "controller": [
+          "SM2259XT",
+          "SM2259XT2",
+          "SM2261XT",
+          "SM2263XT"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "k9ahgd8jgb": {
+      "data": {
+        "partNumber": "K9AHGD8JGB",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "3D V6",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": 1
+        },
+        "voltage": "未知",
+        "generation": "3",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "1.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [
+          "EC1E98AF84CD",
+          "EC5E98AF84CD"
+        ],
+        "controller": [
+          "SM3265AC",
+          "SM2259XT",
+          "SM2259XT2",
+          "SM2262EN",
+          "SM2263XT",
+          "MAS1102"
+        ],
+        "remark": " (1 x K9AHGD8J0B)",
+        "rawDensity": 524288,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "nw582": {
+      "data": {
+        "partNumber": "NW582",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball LBGA, 14 x 18 x 1.4 (8DP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "速度等级": "NV-DDR2 TM6 333MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "特性": "FortisFlash",
+          "设计修订": "B",
+          "美光料号": "MT29F1T08CUCBBH8-6R:B"
+        },
+        "flashId": [
+          "2CA4E53CA904"
+        ],
+        "controller": [
+          "SM2246XT",
+          "JMF608",
+          "JMF670H",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS903",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "29f64b08ncmf3": {
+      "data": {
+        "partNumber": "29F64B08NCMF3",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "20 nm",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "h27t3tm88c": {
+      "data": {
+        "partNumber": "H27T3TM88C",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/3.3V",
+        "generation": "4",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25t3tm88c": {
+      "data": {
+        "partNumber": "H25T3TM88C",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "4",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25t2tb88e": {
+      "data": {
+        "partNumber": "H25T2TB88E",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "6",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [
+          "AD7E295302B0"
+        ],
+        "controller": [
+          "SM2259XT",
+          "SM2259XT2"
+        ],
+        "remark": "",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "th58ljt0t24bade": {
+      "data": {
+        "partNumber": "TH58LJT0T24BADE",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA272",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [
+          "983C98B376E3"
+        ],
+        "controller": [
+          "SM2258",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "th58tft1efkba8n": {
+      "data": {
+        "partNumber": "TH58TFT1EFKBA8N",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "A19 nm/1y",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 3.3V/1.8V (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA152",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "是",
+          "页大小": "16KB 4pl",
+          "块大小": "4MB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 2097152,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "nx686": {
+      "data": {
+        "partNumber": "NX686",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "L06B",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "工程样品",
+          "速度等级": "NV-DDR2 TM8 533MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "美光料号": "MT29F512G08CECBBJ4-37ES:B"
+        },
+        "flashId": [
+          "2CA46432AA04"
+        ],
+        "controller": [
+          "SM2246EN",
+          "SM2258XT",
+          "SM2258",
+          "MK8115",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "th58tgtkf23bb8r": {
+      "data": {
+        "partNumber": "TH58TGTKF23BB8R",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "BiCS3",
+        "cellLevel": "QLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.8V  (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "pfc57": {
+      "data": {
+        "partNumber": "PFC57",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "L95B",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball VBGA, 14 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBML95BNAKDBABH6"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "29f64b08nc": {
+      "data": {
+        "partNumber": "29F64B08NC",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 4,
+          "ch": 1,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "29f32b2alc": {
+      "data": {
+        "partNumber": "29F32B2ALC",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 1,
+          "ch": 2,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "h2jtdg80": {
+      "data": {
+        "partNumber": "H2JTDG80",
+        "vendor": "SK海力士",
+        "type": "带有控制器的NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": "未知",
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": "未知",
+        "package": "未知",
+        "extraInfo": {
+          "不支持": "不被支持的SK海力士闪存"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": null,
+        "rawVendor": "skhynix"
+      }
+    },
+    "tc58tfg8t23": {
+      "data": {
+        "partNumber": "TC58TFG8T23",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS3",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": 1
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 3.3V/1.8V (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "多晶片": "否",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "th58tft0t24bs8c": {
+      "data": {
+        "partNumber": "TH58TFT0T24BS8C",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 3.3V/1.8V (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "29f2t08emlce": {
+      "data": {
+        "partNumber": "29F2T08EMLCE",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "25 nm",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "mt29f2t08emlce": {
+      "data": {
+        "partNumber": "MT29F2T08EMLCE",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 4
+        },
+        "voltage": "Vcc: 2.5V (2.35–3.60V), VccQ: 1.2V (1.14–1.26V)",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [
+          "2CC30832E600",
+          "2CE38A32E600",
+          "2CC30832E601",
+          "2CE38A32E601"
+        ],
+        "controller": [
+          "SM2259",
+          "SM2259XT",
+          "SM2259XT2",
+          "SM2262EN",
+          "SM2263XT",
+          "MAS1102",
+          "CBM2199E"
+        ],
+        "remark": "",
+        "rawDensity": 2097152,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "h27q1t8qem6r": {
+      "data": {
+        "partNumber": "H27Q1T8QEM6R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "16nm",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA-132",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [
+          "AD3C19A36225",
+          "AD3C19A362E5",
+          "AD5C19A36265",
+          "AD3E1AA36325",
+          "AD3E1AA363E5",
+          "AD5C19A36565"
+        ],
+        "controller": [
+          "SM3259AA",
+          "SM3267AE",
+          "SM3268AA",
+          "SM3268AB",
+          "SM3269AA",
+          "SM3269AA_COB",
+          "SM3270AA",
+          "SM3270AB",
+          "SM3270AC",
+          "SM3271AB",
+          "SM3281AB",
+          "SM2256",
+          "SM2258XT",
+          "SM2258",
+          "SM2259XT2",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "bk": {
+      "data": {
+        "partNumber": "BK",
+        "vendor": "英特尔",
+        "type": "未知",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": 1,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "否"
+        },
+        "package": "LGA",
+        "extraInfo": {
+          "晶圆": "否",
+          "无铅": "是",
+          "SKU": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": false
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "th58tfg8ddlta2d": {
+      "data": {
+        "partNumber": "TH58TFG8DDLTA2D",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "15 nm/1z",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 3.3V/1.8V (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "TSOP48",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": "16KB 2pl",
+          "块大小": "4MB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [
+          "983A94937651"
+        ],
+        "controller": [
+          "SM2244LT",
+          "SM2246EN",
+          "SM2246XT",
+          "JMF670H",
+          "SF2241",
+          "SF2281",
+          "CBM2098P",
+          "CBM2098E",
+          "CBM2099",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 262144,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "sdth58tfg8dflba4c": {
+      "data": {
+        "partNumber": "SDTH58TFG8DFLBA4C",
+        "vendor": "西数",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "15nm",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": "未知",
+        "package": "TSOP",
+        "extraInfo": [],
+        "flashId": [
+          "453AA4937A51"
+        ],
+        "controller": [
+          "SM3259AA",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "CBM2199ES",
+          "IS917"
+        ],
+        "remark": "",
+        "interface": null,
+        "rawVendor": "westerndigital"
+      }
+    },
+    "mt查29f512g08eelce": {
+      "data": {
+        "partNumber": "MT查29F512G08EELCE",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f512g08eelce": {
+      "data": {
+        "partNumber": "MT29F512G08EELCE",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 2.5V (2.35–3.60V), VccQ: 1.2V (1.14–1.26V)",
+        "generation": "3",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f16t08gsldhl8-qmes:d": {
+      "data": {
+        "partNumber": "MT29F16T08GSLDHL8-QMES:D",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "16Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "QLC",
+        "classification": {
+          "ce": 4,
+          "ch": 4,
+          "rb": "未知",
+          "die": 16
+        },
+        "voltage": "Vcc: 2.5V (2.35–3.60V), VccQ: 1.2V (1.14–1.26V)",
+        "generation": "4",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "工程样品",
+          "操作温度": "商用 (0°C 到 +70°C)"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 16777216,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "h25bftmgam9r": {
+      "data": {
+        "partNumber": "H25BFTMGAM9R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "8Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "1",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "4.0"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 8388608,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "pfc13": {
+      "data": {
+        "partNumber": "PFC13",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "128Gb",
+        "deviceWidth": "x8",
+        "processNode": "L85A",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball VBGA, 14 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "可用容量": "94-100%",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBML85A71KDBABH6"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 131072,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "29f08t2aocqh1": {
+      "data": {
+        "partNumber": "29F08T2AOCQH1",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "8Tb",
+        "deviceWidth": "x8",
+        "processNode": "3D2 64L",
+        "cellLevel": "QLC",
+        "classification": {
+          "ce": 8,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "晶圆": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 8388608,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "thgmm9t-1006": {
+      "data": {
+        "partNumber": "THGMM9T-1006",
+        "vendor": "铠侠",
+        "type": "未知",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": "4KB",
+          "块大小": "256KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": false
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "pf29f02t2amcqk1": {
+      "data": {
+        "partNumber": "PF29F02T2AMCQK1",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "3D4 144L",
+        "cellLevel": "QLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "晶圆": "否",
+          "无铅": "是"
+        },
+        "flashId": [
+          "89D3AC32C600"
+        ],
+        "controller": [
+          "SM2259XT",
+          "MAS1102"
+        ],
+        "remark": "",
+        "rawDensity": 2097152,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "th58tft0eflba8h": {
+      "data": {
+        "partNumber": "TH58TFT0EFLBA8H",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "15 nm/1z",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 3.3V/1.8V (UNOFFICIAL)",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA132",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "是",
+          "页大小": "16KB 4pl",
+          "块大小": "4MB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "h25qftme4a9r": {
+      "data": {
+        "partNumber": "H25QFTME4A9R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "2.0"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25oftme4a9r": {
+      "data": {
+        "partNumber": "H25OFTME4A9R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25gftme4a9r": {
+      "data": {
+        "partNumber": "H25GFTME4A9R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "mtfdkba512tfh": {
+      "data": {
+        "partNumber": "MTFDKBA512TFH",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": "未知",
+          "die": 16
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "th58lkt1t25ba1c": {
+      "data": {
+        "partNumber": "TH58LKT1T25BA1C",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS5",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA132",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 2097152,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "th58lkt3t48bas": {
+      "data": {
+        "partNumber": "TH58LKT3T48BAS",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "8Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": "2KB",
+          "块大小": "256KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 8388608,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "th58lkt3t48ba8s": {
+      "data": {
+        "partNumber": "TH58LKT3T48BA8S",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "8Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": "2KB",
+          "块大小": "256KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 8388608,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "pfh07": {
+      "data": {
+        "partNumber": "PFH07",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "1Tb",
+        "deviceWidth": "x8",
+        "processNode": "L85C",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "152/221 ball LBGA, 14 x 18 x 1.4 (8DP)",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "可用容量": "94-100%",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBML85CA1KDUABH8"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 1048576,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "ymn0tte1b1deb1": {
+      "data": {
+        "partNumber": "YMN0TTE1B1DEB1",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc=2.35~3.6V; VccQ=1.8/1.2V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA-132; 12 x 18 x 1.x",
+        "extraInfo": [],
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "ymn08te1b1deb1": {
+      "data": {
+        "partNumber": "YMN08TE1B1DEB1",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc=2.35~3.6V; VccQ=1.8/1.2V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA-132; 12 x 18 x 1.x",
+        "extraInfo": [],
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "mt查29f08t08eme1": {
+      "data": {
+        "partNumber": "MT查29F08T08EME1",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f08t08eme1": {
+      "data": {
+        "partNumber": "MT29F08T08EME1",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "5",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt29f08teme1": {
+      "data": {
+        "partNumber": "MT29F08TEME1",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "未知",
+        "generation": "5",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "k9ougd8h2a": {
+      "data": {
+        "partNumber": "K9OUGD8H2A",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "4Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": 8
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V (UNOFFICIAL)",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "1.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [
+          "EC1E98BF84CC"
+        ],
+        "controller": [
+          "SM2258XT",
+          "SM2262EN"
+        ],
+        "remark": " (8 x K9AHGD8H0A)",
+        "rawDensity": 4194304,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "h25t2tb8b8e": {
+      "data": {
+        "partNumber": "H25T2TB8B8E",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25t1tb8b8e": {
+      "data": {
+        "partNumber": "H25T1TB8B8E",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h25t2t": {
+      "data": {
+        "partNumber": "H25T2T",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "thgmm9t": {
+      "data": {
+        "partNumber": "THGMM9T",
+        "vendor": "铠侠",
+        "type": "未知",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "否"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": "未知",
+          "块大小": "未知",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": false
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "pff68": {
+      "data": {
+        "partNumber": "PFF68",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "L06B",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "可用容量": "90-100%",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBNL06B256G9KDBABJ4"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "h27qfg8nda8r": {
+      "data": {
+        "partNumber": "H27QFG8NDA8R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "3D V4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 2,
+          "rb": 2,
+          "die": 2
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "FBGA-152",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [
+          "AD5C292A0190",
+          "AD5C282A0190"
+        ],
+        "controller": [
+          "SM2258XT",
+          "SM2259XT2",
+          "SM2263XT",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2199",
+          "CBM2199E",
+          "PS3111",
+          "INIC6081"
+        ],
+        "remark": "",
+        "rawDensity": 524288,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "mtfc128gaoanam-wt": {
+      "data": {
+        "partNumber": "MTFC128GAOANAM-WT",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "QLC",
+        "classification": {
+          "ce": 0,
+          "ch": 1,
+          "rb": 0,
+          "die": 1
+        },
+        "voltage": "未知",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "操作温度": "无线 (–25°C 到 +85°C)"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "h27q2t8lam9r": {
+      "data": {
+        "partNumber": "H27Q2T8LAM9R",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "16nm",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 16
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "FBGA-152",
+        "extraInfo": {
+          "无铅": "是",
+          "无卤": "是",
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [],
+        "controller": [
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE"
+        ],
+        "remark": "",
+        "rawDensity": 2097152,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "h27q2t8lam": {
+      "data": {
+        "partNumber": "H27Q2T8LAM",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "2Tb",
+        "deviceWidth": "x8",
+        "processNode": "16nm",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 4,
+          "ch": 2,
+          "rb": 4,
+          "die": 16
+        },
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/2.7V~3.6V",
+        "generation": "1",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "坏块": "未知",
+          "操作温度": "未知"
+        },
+        "flashId": [],
+        "controller": [
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE"
+        ],
+        "remark": "",
+        "rawDensity": 2097152,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "skhynix"
+      }
+    },
+    "nw851": {
+      "data": {
+        "partNumber": "NW851",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "384Gb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V (2.50–3.60V), VccQ: 1.2V (1.14–1.26) or 1.8V (1.70–1.95V)",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "速度等级": "NV-DDR3 TM9 666MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "特性": "FortisFlash",
+          "设计修订": "B",
+          "美光料号": "MT29F384G08EBHBBJ4-3R:B"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 393216,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
     }
   },
   "dram_detail": {
@@ -17039,6 +20774,378 @@
         "type": "LPDDR4X SDRAM",
         "vendor_code": "EC",
         "width": "未知"
+      }
+    },
+    "k4f8e304hb-mgcj": {
+      "data": {
+        "partNumber": "K4F8E304HB-MGCJ",
+        "vendor": "三星/Samsung",
+        "bank": "8",
+        "density": "未知",
+        "module": "SODIMM",
+        "package": "FBGA (Halogen-free & Lead-free,DDP)",
+        "revision": "3rd Gen/B-DIE",
+        "speed": "未知",
+        "temppower": "Commerdial Temp.(-25°C-85°C)",
+        "type": "LPDDR4 SDRAM",
+        "vendor_code": "EC",
+        "width": "未知"
+      }
+    },
+    "k4b4g1646d": {
+      "data": {
+        "partNumber": "K4B4G1646D",
+        "vendor": "三星/Samsung",
+        "bank": "8",
+        "density": "4Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "5th Gen/D-DIE",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "k4ube3d": {
+      "data": {
+        "partNumber": "K4UBE3D",
+        "vendor": "三星/Samsung",
+        "bank": "未知",
+        "density": "未知",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "未知",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "LPDDR4X SDRAM",
+        "vendor_code": "EC",
+        "width": "未知"
+      }
+    },
+    "k4ube3d4aamgcr": {
+      "data": {
+        "partNumber": "K4UBE3D4AAMGCR",
+        "vendor": "三星/Samsung",
+        "bank": "8",
+        "density": "未知",
+        "module": "SODIMM",
+        "package": "FBGA (Halogen-free & Lead-free,DDP)",
+        "revision": "2nd Gen/A-DIE",
+        "speed": "未知",
+        "temppower": "Commerdial Temp.(-25°C-85°C)",
+        "type": "LPDDR4X SDRAM",
+        "vendor_code": "EC",
+        "width": "未知"
+      }
+    },
+    "mt40a4g8baf-062e:b": {
+      "data": {
+        "partNumber": "MT40A4G8BAF-062E:B",
+        "vendor": "镁光/Micron",
+        "density": "4G",
+        "die": "未知",
+        "esws": "None",
+        "speed": "DDR4-1600 PC4-3200 1600MHz 3200MTPS 22-22-22",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.2, VDDQ 1.2",
+        "width": "8",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "k4a4g045w0": {
+      "data": {
+        "partNumber": "K4A4G045W0",
+        "vendor": "三星/Samsung",
+        "bank": "16",
+        "density": "4Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "未知",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "EC",
+        "width": "x4"
+      }
+    },
+    "k4b4g1646e": {
+      "data": {
+        "partNumber": "K4B4G1646E",
+        "vendor": "三星/Samsung",
+        "bank": "8",
+        "density": "4Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "6th Gen/E-DIE",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "k4aag165wa-bctd": {
+      "data": {
+        "partNumber": "K4AAG165WA-BCTD",
+        "vendor": "三星/Samsung",
+        "bank": "16",
+        "density": "16Gb",
+        "module": "SODIMM",
+        "package": "FBGA (Halogen-free & Lead-free,Flip Chip)",
+        "revision": "2nd Gen/A-DIE",
+        "speed": "DDR4-2666 (1333MHz@CL=19,tRCD=19,tRP=19)",
+        "temppower": "Commerdial Temp.(0°C-85°C) & Normal Power(1.5V)",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "k4f6e3s": {
+      "data": {
+        "partNumber": "K4F6E3S",
+        "vendor": "三星/Samsung",
+        "bank": "未知",
+        "density": "16Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "未知",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "LPDDR4 SDRAM",
+        "vendor_code": "EC",
+        "width": "x32"
+      }
+    },
+    "k4b2g1646f": {
+      "data": {
+        "partNumber": "K4B2G1646F",
+        "vendor": "三星/Samsung",
+        "bank": "8",
+        "density": "2Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "7th Gen/F-DIE",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "nt5cb128m16fp": {
+      "data": {
+        "partNumber": "NT5CB128M16FP",
+        "vendor": "南亚/Nanya",
+        "density": "2Gb",
+        "depth": "128M",
+        "grade": "Commercial Grade",
+        "package": "96-Ball BGA; DDR3",
+        "speed": "未知",
+        "type": "DDR3",
+        "vendor_code": "NT",
+        "version": "未知",
+        "voltage": "SSTL-15 (1.5V, 1.5V)",
+        "width": "16"
+      }
+    },
+    "mt41k256m16ha-125:e": {
+      "data": {
+        "partNumber": "MT41K256M16HA-125:E",
+        "vendor": "镁光/Micron",
+        "density": "256M",
+        "die": "Single die",
+        "esws": "None",
+        "speed": "DDR3-800 PC3-1600 800MHz 1600MTPS 11-11-11",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.35_3, VDDQ 1.35_3",
+        "width": "16",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "h5tc4g63cfr": {
+      "data": {
+        "partNumber": "H5TC4G63CFR",
+        "vendor": "海力士/Hynix",
+        "bank": "8 Banks",
+        "density": "4Gb, 8K/64ms Refres",
+        "package": "FBGA SDP (Single Die Package)",
+        "package_material": "Lead Free & Halogen Free (ROHS/ROHS2 compliant)",
+        "power": "VDD=1.35V & VDDQ=1.35V",
+        "revision": "4th Gen",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "AD",
+        "width": "x16",
+        "part_type": "OLD"
+      }
+    },
+    "mt41k512m8rh-125:e": {
+      "data": {
+        "partNumber": "MT41K512M8RH-125:E",
+        "vendor": "镁光/Micron",
+        "density": "512M",
+        "die": "未知",
+        "esws": "None",
+        "speed": "DDR3-800 PC3-1600 800MHz 1600MTPS 11-11-11",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.35_3, VDDQ 1.35_3",
+        "width": "8",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "mt40a1g8sa-075:e": {
+      "data": {
+        "partNumber": "MT40A1G8SA-075:E",
+        "vendor": "镁光/Micron",
+        "density": "1G",
+        "die": "Single die",
+        "esws": "None",
+        "speed": "DDR4-1333 PC4-2666 1333MHz 2666MTPS 19-19-19",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.2, VDDQ 1.2",
+        "width": "8",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "h5an4g6nbj": {
+      "data": {
+        "partNumber": "H5AN4G6NBJ",
+        "vendor": "海力士/Hynix",
+        "bank": "Non-TSV",
+        "density": "4Gb, 8K/64ms Refres",
+        "package": "Flipchip SDP",
+        "package_material": "未知",
+        "power": "VDD & VDDQ=1.2V",
+        "revision": "3rd Gen",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "AD",
+        "width": "x16",
+        "part_type": "OLD"
+      }
+    },
+    "mt53b512m16d1np-046 it:f": {
+      "data": {
+        "partNumber": "MT53B512M16D1NP-046 IT:F",
+        "vendor": "镁光/Micron",
+        "density": "512M",
+        "die": "Single die  (LPDDR2, LPDDR3, LPDDR4, LPDDR5)",
+        "esws": "None",
+        "speed": "2133MHz 4266MTPS",
+        "type": "LPDRR4 Mobile/LPDDR4X Mobile",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.1, VDDQ 1.1",
+        "width": "16",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "mt40a1g16kd-062e:e": {
+      "data": {
+        "partNumber": "MT40A1G16KD-062E:E",
+        "vendor": "镁光/Micron",
+        "density": "1G",
+        "die": "未知",
+        "esws": "None",
+        "speed": "DDR4-1600 PC4-3200 1600MHz 3200MTPS 22-22-22",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.2, VDDQ 1.2",
+        "width": "16",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "mt40a1g16kd-062e rs:e": {
+      "data": {
+        "partNumber": "MT40A1G16KD-062E RS:E",
+        "vendor": "镁光/Micron",
+        "density": "1G",
+        "die": "未知",
+        "esws": "None",
+        "speed": "DDR4-1600 PC4-3200 1600MHz 3200MTPS 22-22-22",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.2, VDDQ 1.2",
+        "width": "16",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "k4a8g165wb": {
+      "data": {
+        "partNumber": "K4A8G165WB",
+        "vendor": "三星/Samsung",
+        "bank": "16",
+        "density": "8Gb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "3rd Gen/B-DIE",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR4 SDRAM",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "ntfe0213e131g9": {
+      "data": {
+        "partNumber": "NTFE0213E131G9",
+        "vendor": "南亚/Nanya",
+        "density": "未知",
+        "depth": "0",
+        "grade": "Commercial Grade",
+        "package": "78-Ball FCBGA; DDR3",
+        "speed": "未知",
+        "type": "未知",
+        "vendor_code": "NT",
+        "version": "未知",
+        "voltage": "未知",
+        "width": "0"
+      }
+    },
+    "k4s561632k": {
+      "data": {
+        "partNumber": "K4S561632K",
+        "vendor": "三星/Samsung",
+        "bank": "4",
+        "density": "256Mb",
+        "module": "SODIMM",
+        "package": "未知",
+        "revision": "未知",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "未知",
+        "vendor_code": "EC",
+        "width": "x16"
+      }
+    },
+    "mt52l256m64d2pp-107 wt:b": {
+      "data": {
+        "partNumber": "MT52L256M64D2PP-107 WT:B",
+        "vendor": "镁光/Micron",
+        "density": "256M",
+        "die": "2-die stack  (LPDDR2, LPDDR3, LPDDR4, LPDDR5)",
+        "esws": "None",
+        "speed": "未知",
+        "type": "LPDDR3 Mobile/DDR3L Mobile/LPDDR3 Mobile",
+        "vendor_code": "2C",
+        "voltage": "VDD2 1.2, VDDQ 1.2",
+        "width": "64",
+        "other": "无",
+        "temp": "Commercial temperature"
       }
     }
   }

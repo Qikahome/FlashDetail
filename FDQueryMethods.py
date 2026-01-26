@@ -159,8 +159,10 @@ def get_detail(arg: str, refresh: bool = False,debug: bool=False,save: bool=None
                 # 为缓存数据添加accept方法（不执行任何操作，因为已经在数据库中）
                 cached_data["accept"] = lambda: None
                 return cached_data
-                
-        if is_hex(arg) and arg.startswith(("89","45","2C","EC","AD","98","9B")):
+
+        if debug:
+            print(f"料号{arg}是十六进制吗？{is_hex(arg)}")
+        if is_hex(arg) and arg.strip().upper().startswith(("89","45","2C","EC","AD","98","9B")):
             return get_detail_from_ID(arg=arg,refresh=refresh,debug=debug,save=save,url=url,**kwargs)
         # 尝试本地算法解码（WIP）
         if not result and local is not False: pass
@@ -358,7 +360,7 @@ def total_density(density: str, die_count: str) -> str:
     try:
         original_density = density
         density = str(density).strip()
-        die_count = int(die_count.strip())
+        die_count = float(die_count.strip())
         bytes_val = 0.0  # 统一转换为 MB 作为中间单位
 
         # 提取单die数值并转换为 MB
@@ -448,35 +450,35 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 die_cellLevel=int(id_str[5],16)
                 return ["1","2","4","8"][die_cellLevel%4],["SLC","MLC","TLC","QLC"][die_cellLevel//4]
             DENSITY_MAPPING_TOGGLE = { # Toggle阵营的容量规则
-                "D3": "1GB",   
-                "D5": "2GB",   
-                "D7": "4GB",   
-                "DE": "8GB",      
-                "3A": "16GB",  "5A": "16GB",    
-                "3C": "32GB",  "4C": "32GB", "5C": "64GB",  
+                "D3": "1GB",
+                "D5": "2GB",
+                "D7": "4GB",
+                "DE": "8GB",
+                "3A": "16GB",  "5A": "16GB",
+                "3C": "32GB",  "4C": "32GB", "5C": "64GB",
                 "3E": "64GB", "5E": "64GB", "7E": "64GB",
-                "48": "128GB",  "89": "128GB", 
+                "48": "128GB",  "89": "128GB",
                 "58": "160GB",
                 "73": "170.625GB",
-                "49": "256GB", 
-                "40": "512GB", 
+                "49": "256GB",
+                "40": "512GB",
                 "41": "1TB",
             }
             DENSITY_MAPPING_IM = { #IM的容量规则
-                "DC": "512MB",    
+                "DC": "512MB",
                 "48": "2GB",
                 "68": "4GB",
                 "88": "8GB",   "64": "8GB",
-                "84": "16GB",  
-                "A4": "32GB", 
+                "84": "16GB",
+                "A3":"32GB", "A4": "32GB",
                 "B4": "48GB",
                 "C3": "64GB", "C4": "64GB",
                 "CB": "96GB",
-                "D3": "128GB","D4": "128GB", 
+                "D3": "128GB","D4": "128GB",
                 "E4": "256GB",
             }
             #Toggle阵营
-            if id_str.startswith(("98","45")): 
+            if id_str.startswith(("98","45")):
                 result["result"] = True
                 data["vendor"]={"98":"东芝/恺侠","45":"闪迪/西数"}[id_str[:2]]
                 data["density"] = DENSITY_MAPPING_TOGGLE.get(id_str[2:4], "未知")
@@ -496,13 +498,14 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 data["vendor"]="海力士"
                 data["density"] = DENSITY_MAPPING_TOGGLE.get(id_str[2:4], "未知")
                 data["die"],data["cellLevel"]=get_die_cellLevel(id_str)
-                data["density"]=total_density(data["density"],data["die"]) #idk
                 data["pageSize"] = ["2","4","8","16"][int(id_str[7],16)%4]
                 data["plane"] = ["1","2","4","8"][int(id_str[4],16)%4]
                 # data["plane"] = str(int(data["totalPlane"])//int(data["die"]))
-                data["processNode"] = {"40":"32nm","C4":"20nm","4A":"16nm","50":"14nm",
+                data["processNode"] = {"40":"32nm","44":"20nm","C4":"20nm","4A":"16nm","50":"14nm",
                 "60":"3DV1","70":"3DV2","80":"3DV3","90":"3DV4","A0":"3DV5",
                 "B0":"3DV6","C0":"3DV7","D0":"3DV8"}.get(id_str[10]+"0"if id_str[11]=="2"else id_str[10:12],"未知")
+                if("3D" in data["processNode"]):
+                    data["density"]=total_density(data["density"],data["die"]) #idk
             # onfi阵营 
             elif id_str.startswith(("2C","89")):
                 result["result"] = True
@@ -518,7 +521,7 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                     "A2":"3D3 96L(B27A)",
                     "E6":"3D3 96L(B27C)" if id_str[-1]=="4" else "3D3 96L(B27B)",
                     "C2":"3D4 144L(N38B)",
-                    "C6":"3D3 96L(N28A)" if id_str[4]=="1" else "3D4 144L(N38A)",
+                    "C6":{"1":"3D3 96L(N28A)","6":"3D3 96L(M26A)"}.get(id_str[4],"3D4 144L(N38A)"),
                     "E5":"3D4 144L(B36R)",
                     "EA":{"10":"3D4 144L(B37R)","30":{"TLC":"3D5 176L(B47R)","QLC":"3D5 176L(N48R)"}.get(data["cellLevel"],"3D5 176L"),
                     "34":"3D5 176L(B47T)"}.get(id_str[10::],"3D5 176L"),
@@ -547,6 +550,9 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
             if p_tags:
                 result = json.loads(p_tags.get_text())
             # 添加accept方法，仅在调用时保存数据到数据库
+        
+        if result["data"].get("density","未知") != "未知" and result["data"].get("die","未知") != "未知":
+            result["data"]["dieDensity"] = total_density(result["data"]["density"],str(1.0/int(result["data"]["die"])))
 
         if save is None and result.get("result",False):
             # def accept_func():
@@ -560,10 +566,6 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
             if save is True:
                 save_to_database('flash_id_detail', id_str.lower(), result,debug)
             result["accept"] = lambda: None
-        return result
-            
-        result = {"result": False, "error": "未找到有效数据"}
-        result["accept"] = lambda: None
         return result
     except json.JSONDecodeError:
         result = {"result": False, "error": "API返回格式错误（非JSON）"}
@@ -761,9 +763,9 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
         data={"partNumber":pn,"type":"NAND","width":"x8"}
         data["vendor"]="群联-"+{"T":"东芝","S":"恺侠","I":"镁光","K":"镁光","H":"海力士",
                                 "D":"闪迪","C":"长江存储","N":"英特尔"}.get(pn[0],"未知")
-        data["package"]={"A":"BGA132","P":"BGA152","C":"BGA272","O":"SAT-LGA60",
-                        "K":"SAT-LGA60","R":"SAT-LGA60","F":"TSOP48","T":"TSOP48",
-                        "G":"TSOP48","X":"SAT-LGA60","1":"BGA152","2":"BGA154"}.get(pn[1],"未知")
+        data["package"]={"A":"BGA132","P":"BGA152","1":"BGA152","C":"BGA272",
+                        "O":"SAT-LGA60","K":"SAT-LGA60","R":"SAT-LGA60","U":"SAT-LGA60","X":"SAT-LGA60",
+                        "F":"TSOP48","T":"TSOP48","G":"TSOP48","2":"BGA154"}.get(pn[1],"未知")
         data["classification"]={}
         data["classification"]["ce"],data["die"]={"1":(1,1),"2":(2,2),"5":(2,2),"6":(2,4),
                     "7":(4,4),"8":(4,8),"A":(4,16),"B":(8,8),
@@ -783,7 +785,7 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
                 return {"P":("16nm","MLC"),"X":("3DV7","TLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="I" or pn[0]=="K" or pn[0]=="N":#IM
                 return {"N":("20nm(L85)","MLC"),"P":("16nm(L95)","MLC"),#2D
-                        "O":("L06/B16/N18","未知"),"V":("B27A","TLC"),"I":("B27B","TLC"),"X":("B37R","TLC"),
+                        "O":("L06/B16/N18","未知"),"V":("B27A","TLC"),"I":("B27B","TLC"),"X":("B36/B37/N38","TLC/QLC"),
                         "Y":("B47R","TLC"),"Z":("N48R","QLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="C":
                 return {"O":("JGS","TLC")}.get(pn[8],("未知(长江存储料号缺乏，希望大家多多提供)","未知"))
@@ -800,7 +802,7 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
 def is_dram(pn:str) -> bool:
     """判断是否为DRAM料号"""
     pn=pn.upper()
-    return pn.startswith("NT") or pn.startswith("H5T") or (pn.startswith("D") and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")  
+    return pn.startswith("NT") or pn.startswith("H5") or ((pn.startswith("D") or pn.startswith("C")) and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")
 
 def is_phison(pn:str,online:bool=False,**kwargs) -> bool:
     """判断是否为Phison料号"""

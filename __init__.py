@@ -64,6 +64,7 @@ FlashDetail插件使用说明
     /whitelist add/list/remove - 管理白名单用户/群组
     /blacklist add/list/remove - 管理黑名单用户/群组
     /api - 显示api相关信息（具体用法使用/api help）
+    /config - 管理插件配置（仅所有者可用）
 
     白名单/黑名单命令格式：
         /whitelist add user/group <id> - 添加用户/群组到白名单
@@ -73,6 +74,10 @@ FlashDetail插件使用说明
         /whitelist remove user/group - 清空指定类型白名单
 
     （黑名单命令格式与白名单相同）
+
+    配置命令格式：
+        /config list - 显示当前配置状态
+        /config <选项名> <值> - 设置配置项（如true/false或数字）
 
     快捷封禁/解封命令：
         /ban <user_id> - 将用户加入黑名单（不能封禁管理员）
@@ -86,16 +91,12 @@ FlashDetail插件使用说明
     /op <user_id> - 设置指定用户为管理员
     /deop <user_id> - 移除用户的管理员权限
     /reload - 重载插件
-    /config - 管理插件配置（仅所有者可用）
+
 
     管理员命令格式：
         /admin add <user_id> - 添加管理员
         /admin remove <user_id> - 移除管理员（不能移除所有者）
         /admin list - 列出所有管理员及所有者
-
-    配置命令格式：
-        /config list - 显示当前配置状态
-        /config <选项名> <值> - 设置配置项（如true/false或数字）
 """
 
     
@@ -180,9 +181,16 @@ FlashDetail插件使用说明
     # 喵喵喵
     @喵.handle()
     async def 喵_handler(event: Event):
-        if(plugin_config.configs["cat"] and "喵" in event.get_message().extract_plain_text()):
-            await 喵.finish("喵")
-    
+        text=event.get_message().extract_plain_text()
+        if(plugin_config.configs["cat"] and "喵" in text):
+            args = text.split("--")
+            args = [arg.strip() for arg in args]
+            #从args中找count开头的参数
+            count = next(int(arg.split("=")[1]) for arg in args if arg.startswith("count")) if any(arg.startswith("count") for arg in args) else 1
+            times = next(int(arg.split("=")[1]) for arg in args if arg.startswith("times")) if any(arg.startswith("times") for arg in args) else 1
+            for i in range(times):
+                await 喵.send("喵"*count)
+        await 喵.finish()
 
     def parse_config_value(value: str) -> Any:
         if value.lower() in ["true", "yes"]:
@@ -198,8 +206,8 @@ FlashDetail插件使用说明
     @config_cmd.handle()
     async def config_handler(event: Event, arg: Message = CommandArg()):
         user_id = event.get_user_id()
-        if not is_owner(user_id):
-            await config_cmd.finish("")
+        if not is_admin(user_id):
+            await config_cmd.finish()
             return
         args = arg.extract_plain_text().strip().split()
         if not args:
@@ -816,7 +824,7 @@ def flashId(arg: list[str]) -> str:
 
 translations = {
     "id": "", "vendor": "厂商：", "die": "Die数量：", "plane": "平面数：","totalPlane": "总平面数/Ce：",
-    "pageSize": "页面大小：", "blockSize": "块大小：", "processNode": "制程：",
+    "pageSize": "页面大小：", "blockSize": "块大小：", "processNode": "制程：","dieDensity": "单Die容量：",
     "cellLevel": "单元类型：", "partNumber": "料号：", "type": "类型：", "density": "容量：",
     "channel": "通道数：","ce": "片选：","die": "Die数量：","availablePn": "可能的料号：",
     "deviceWidth": "位宽：","voltage": "电压：", "generation": "代数：", "package": "封装：", 

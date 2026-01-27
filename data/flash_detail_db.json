@@ -24034,6 +24034,105 @@
         },
         "rawVendor": "micron"
       }
+    },
+    "mt62f1536m32d4ds-026": {
+      "data": {
+        "partNumber": "MT62F1536M32D4DS-026",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "154/195 ball VFBGA, 13.5 x 11.5 x 1.0",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "mt62f1536m32d4ds": {
+      "data": {
+        "partNumber": "MT62F1536M32D4DS",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "未知",
+        "processNode": "未知",
+        "cellLevel": "未知",
+        "classification": {
+          "ce": "未知",
+          "ch": "未知",
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "未知",
+        "generation": "未知",
+        "接口": {
+          "async": "否",
+          "sync": "否"
+        },
+        "package": "154/195 ball VFBGA, 13.5 x 11.5 x 1.0",
+        "extraInfo": {
+          "企业级": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "async": false,
+          "sync": false
+        },
+        "rawVendor": "micron"
+      }
+    },
+    "h25t4tmg8c": {
+      "data": {
+        "partNumber": "H25T4TMG8C",
+        "vendor": "SK海力士",
+        "type": "NAND",
+        "density": "8Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": "未知",
+        "voltage": "Vcc: 2.7V~3.6V, VccQ: 1.7V~1.95V/1.14V~1.26V",
+        "generation": "4",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 8388608,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "skhynix"
+      }
     }
   },
   "dram_detail": {
@@ -25351,6 +25450,53 @@
         "width": "32",
         "other": "无",
         "temp": "Commercial temperature"
+      }
+    },
+    "mt62f1536m32d4ds-026": {
+      "data": {
+        "partNumber": "MT62F1536M32D4DS-026",
+        "vendor": "镁光/Micron",
+        "density": "1536M",
+        "die": "4-die stack  (LPDDR2, LPDDR3, LPDDR4, LPDDR5)",
+        "esws": "None",
+        "speed": "未知",
+        "type": "LPDDR5 Mobile/LPDDR5X Mobile",
+        "vendor_code": "2C",
+        "voltage": "VDD2H 1.05, VDDQ 0.5_2",
+        "width": "32",
+        "other": "无",
+        "temp": "Commercial temperature"
+      }
+    },
+    "sgg64m16v68ag8gnf": {
+      "data": {
+        "partNumber": "SGG64M16V68AG8GNF",
+        "vendor": "镁光降级/Spectek",
+        "depth": "64M",
+        "grade": "8K Grade A ~98-100%",
+        "mark": "SpecTek Mark; component sale",
+        "package": "未知",
+        "speed": "未知",
+        "type": "DDR3",
+        "vendor_code": "B5",
+        "voltage": "1.5V DDR3",
+        "width": "16"
+      }
+    },
+    "nt1g16d3bsfp": {
+      "data": {
+        "partNumber": "NT1G16D3BSFP",
+        "vendor": "南亚/Nanya",
+        "density": "未知",
+        "depth": "0",
+        "grade": "Commercial Grade",
+        "package": "未知",
+        "speed": "未知",
+        "type": "未知",
+        "vendor_code": "NT",
+        "version": "未知",
+        "voltage": "未知",
+        "width": "0"
       }
     }
   }

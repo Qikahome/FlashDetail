@@ -4,6 +4,8 @@ import os
 from bs4 import BeautifulSoup
 import urllib3
 
+from . import spectek_decoder_v2
+
 from .FDConfig import config_instance as config
 from .FDJsonDatabase import save_to_database, get_from_database, db_instance
 
@@ -506,7 +508,7 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 "B0":"3DV6","C0":"3DV7","D0":"3DV8"}.get(id_str[10]+"0"if id_str[11]=="2"else id_str[10:12],"未知")
                 if("3D" in data["processNode"]):
                     data["density"]=total_density(data["density"],data["die"]) #idk
-            # onfi阵营 
+            # onfi阵营
             elif id_str.startswith(("2C","89")):
                 result["result"] = True
                 data["vendor"]={"2C":"镁光","89":"英特尔"}[id_str[:2]]
@@ -611,14 +613,20 @@ def parse_micron_pn(arg: str, refresh: bool = False, debug: bool=False,save: boo
         if local is not False: pass
         # 访问micron-online接口获取完整part-number
         if local is not True and not result:
-            micron_response = get_from_micron(pn, debug)
-            # 尝试解析JSON响应
-            response_data = json.loads(micron_response.text)
-            if debug:
-                print(response_data)
-            # 确保返回的数据结构包含必要字段
-            result["data"]=(response_data.get("details",[{}]) or [{}])[0]
-            result["result"]=bool(result["data"])
+            if(pn.startswith("P")):
+                response=spectek_decoder_v2.decode_spectek_mark(pn)
+                if(debug):
+                    print(response)
+                result = {"result": True, "data": {"part-number":response[1][1]}}
+            else:
+                micron_response = get_from_micron(pn, debug)
+                # 尝试解析JSON响应
+                response_data = json.loads(micron_response.text)
+                if debug:
+                    print(response_data)
+                # 确保返回的数据结构包含必要字段
+                result["data"]=(response_data.get("details",[{}]) or [{}])[0]
+                result["result"]=bool(result["data"])
         # 添加accept方法，仅在调用时保存数据到数据库
         if result.get("result", False) and save:  # 如果没有result字段，默认为True
             def accept_func():
@@ -664,7 +672,7 @@ def get_dram_detail(arg: str, refresh: bool = False, debug: bool=False,save: boo
         return result
     
     result={}
-    try:   
+    try:
         pn = arg.strip().upper()
         # 处理5位DRAM料号特殊逻辑
         if len(pn) == 5:
@@ -757,7 +765,7 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
             result["accept"] = lambda: None
             return result
         if len(pn) != 10:
-            result = {"result": False, "error": "Phison料号长度必须为10位"} 
+            result = {"result": False, "error": "Phison料号长度必须为10位"}
             result["accept"] = lambda: None
             return result
         data={"partNumber":pn,"type":"NAND","width":"x8"}
@@ -802,9 +810,9 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
 def is_dram(pn:str) -> bool:
     """判断是否为DRAM料号"""
     pn=pn.upper()
-    return pn.startswith("NT") or pn.startswith("H5") or ((pn.startswith("D") or pn.startswith("C")) and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")
+    return pn.startswith("NT") or pn.startswith("H5") or ((pn.startswith("D") or pn.startswith("C") or pn.startswith("PE")) and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")
 
-def is_phison(pn:str,online:bool=False,**kwargs) -> bool:
+def is_phison(pn:str,**kwargs) -> bool:
     """判断是否为Phison料号"""
     pn=pn.upper()
     return len(pn)==10 and pn[4] == "G" and  pn[0] in ["T","S","I","H","D","C","N"]

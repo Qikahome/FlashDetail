@@ -170,7 +170,7 @@ FlashDetail插件使用说明
         if(session_id[0]!="group"):
             return
         session_id=session_id[1]
-        if(event.get_message().extract_plain_text() == last_message.get(session_id,["",0])[0]):
+        if(event.get_message().extract_plain_text() == last_message.get(session_id,[None,0])[0]):
             last_message[session_id][1] += 1
         else:
             last_message[session_id] = [event.get_message().extract_plain_text(), 1]

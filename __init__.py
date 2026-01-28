@@ -140,16 +140,18 @@ FlashDetail插件使用说明
         message_text = event.get_message().extract_plain_text().strip()
         
         # 检查是否包含"撤回"关键词
-        if "撤回" not in message_text:
+        if "撤回" != message_text:
             return
-        
+
+        print(event.reply)
         # 检查是否是回复消息
         if event.reply:
-            print(event.reply)
             # 获取被回复的消息ID
             reply_message_id = event.reply.message_id
+            print(is_admin(event.get_user_id()))
+            print(event.get_user_id(), event.reply.sender.user_id)
             # 检查是否是管理员或者撤回目标是用户自己的消息
-            if (not is_admin(event.get_user_id())) and (event.get_user_id() != event.reply.sender):
+            if not (is_admin(event.get_user_id()) or str(event.get_user_id()) == str(event.reply.sender.user_id)):
                 return
             try:
                 # 尝试撤回消息
@@ -1045,6 +1047,8 @@ if __name__ == "__main__":
         plugin_config = Config.from_file()
     instance()
 
+# reload
+# reload
 # reload
 # reload
 # reload

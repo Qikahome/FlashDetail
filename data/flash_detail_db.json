@@ -24133,6 +24133,366 @@
         },
         "rawVendor": "skhynix"
       }
+    },
+    "pfg16": {
+      "data": {
+        "partNumber": "PFG16",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "4Tb",
+        "deviceWidth": "x8",
+        "processNode": "L06B",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 8,
+          "ch": 2,
+          "rb": 4,
+          "die": 16
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball LBGA, 12 x 18 x 1.5",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "可用容量": "见S*定义（芯片上的SG，S7，S8字样)",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBNL06B4T0KDTABM5"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 4194304,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "pfg06": {
+      "data": {
+        "partNumber": "PFG06",
+        "vendor": "美光降级",
+        "type": "NAND",
+        "density": "128Gb",
+        "deviceWidth": "x8",
+        "processNode": "B05A",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V, VssQ: 0V",
+        "generation": "未知",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "ECC已启用": "否",
+          "半页大小": "否",
+          "可用容量": "90-100%",
+          "封装可用部分类型": "所有片选可用",
+          "美光料号": "FBNB05A128G9KDBABJ4"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 131072,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "spectek"
+      }
+    },
+    "k9pmay8j6a": {
+      "data": {
+        "partNumber": "K9PMAY8J6A",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 6,
+          "ch": "未知",
+          "rb": 2,
+          "die": 8
+        },
+        "voltage": "未知",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "2.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "k9pmay8j5a": {
+      "data": {
+        "partNumber": "K9PMAY8J5A",
+        "vendor": "三星",
+        "type": "NAND",
+        "density": "未知",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "MLC",
+        "classification": {
+          "ce": 4,
+          "ch": "未知",
+          "rb": 4,
+          "die": 8
+        },
+        "voltage": "未知",
+        "generation": "2",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "未知",
+        "extraInfo": {
+          "TogDDR版本": "2.0",
+          "无铅": "否",
+          "无卤": "否",
+          "铜工艺": "否",
+          "操作温度": "未知",
+          "坏块": "未知"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "samsung"
+      }
+    },
+    "ymn08te1b3pc3b": {
+      "data": {
+        "partNumber": "YMN08TE1B3PC3B",
+        "vendor": "长江存储",
+        "type": "NAND",
+        "density": "4Tb",
+        "deviceWidth": "x8",
+        "processNode": "未知",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 8,
+          "ch": 4,
+          "rb": 4,
+          "die": 16
+        },
+        "voltage": "Vcc=2.35~3.6V; VccQ=1.8/1.2V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA-272; 14 x 18 x 1.x",
+        "extraInfo": {
+          "操作温度": "0°C ~ 70°C",
+          "速度等级": "ONFI 4.0; Max Speed=800MB/s"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 4194304,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "ymtc"
+      }
+    },
+    "pf29f32b2alcth2": {
+      "data": {
+        "partNumber": "PF29F32B2ALCTH2",
+        "vendor": "英特尔",
+        "type": "NAND",
+        "density": "256Gb",
+        "deviceWidth": "x8",
+        "processNode": "3D2 64L",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 2,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V, VccQ: 1.8V/1.2V",
+        "generation": "2",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "BGA",
+        "extraInfo": {
+          "晶圆": "否",
+          "无铅": "是"
+        },
+        "flashId": [
+          "89A40832A100",
+          "89C40832A600"
+        ],
+        "controller": [
+          "SM2258XT",
+          "SM2258",
+          "SM2259XT2",
+          "SM2259",
+          "SM2262EN",
+          "SM2263XT",
+          "MAS0902",
+          "MAS1102",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 262144,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "intel"
+      }
+    },
+    "th58ljg9t24ta29": {
+      "data": {
+        "partNumber": "TH58LJG9T24TA29",
+        "vendor": "铠侠",
+        "type": "NAND",
+        "density": "512Gb",
+        "deviceWidth": "x8",
+        "processNode": "BiCS4",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 2,
+          "ch": 1,
+          "rb": "未知",
+          "die": "未知"
+        },
+        "voltage": "Vcc: 2.7V-3.6V, VccQ: 1.14V-1.26V/1.7V-1.95V",
+        "generation": "未知",
+        "接口": {
+          "TogDDR版本": "是"
+        },
+        "package": "TSOP48",
+        "extraInfo": {
+          "多晶片": "是",
+          "企业级": "否",
+          "页大小": ">4KB",
+          "块大小": ">512KB",
+          "无铅": "是",
+          "无卤": "否"
+        },
+        "flashId": [],
+        "controller": [],
+        "remark": "未知",
+        "rawDensity": 524288,
+        "interface": {
+          "toggle": true
+        },
+        "rawVendor": "kioxia"
+      }
+    },
+    "nw877": {
+      "data": {
+        "partNumber": "NW877",
+        "vendor": "美光",
+        "type": "NAND",
+        "density": "128Gb",
+        "deviceWidth": "x8",
+        "processNode": "3D B05A",
+        "cellLevel": "TLC",
+        "classification": {
+          "ce": 1,
+          "ch": 1,
+          "rb": 1,
+          "die": 1
+        },
+        "voltage": "Vcc: 3.3V (2.70–3.60V), VccQ: 1.8V (1.70–1.95V)",
+        "generation": "4",
+        "接口": {
+          "async": "是",
+          "sync": "是"
+        },
+        "package": "132/187 ball VBGA, 12 x 18 x 1.0 (SDP, DDP)",
+        "extraInfo": {
+          "企业级": "否",
+          "生产状态": "量产",
+          "速度等级": "NV-DDR2 TM7 400MT/s",
+          "操作温度": "商用 (0°C 到 +70°C)",
+          "特性": "媒体",
+          "设计修订": "D",
+          "美光料号": "MT29F128G08EBCDBJ4-5M:D"
+        },
+        "flashId": [
+          "2C845832A100",
+          "2C845832A000",
+          "2C84D832A100",
+          "2C844822A100",
+          "2C844822A000",
+          "2C845832A104"
+        ],
+        "controller": [
+          "SM3259AA",
+          "SM3268AB",
+          "SM3270AB",
+          "SM3270AC",
+          "SM3271AB",
+          "SM3280AB",
+          "SM3280BA",
+          "SM3280BB",
+          "SM3281AB",
+          "SM3281BA",
+          "SM3281BB",
+          "SM3282BB",
+          "SM2258XT",
+          "SM2258",
+          "SM2259XT2",
+          "AU6989SN-GTC",
+          "AU6989SN-GTD",
+          "AU6989SN-GTE",
+          "CBM2099E",
+          "CBM2199",
+          "CBM2199E",
+          "IS917"
+        ],
+        "remark": "",
+        "rawDensity": 131072,
+        "interface": {
+          "async": true,
+          "sync": true
+        },
+        "rawVendor": "micron"
+      }
     }
   },
   "dram_detail": {
@@ -25497,6 +25857,55 @@
         "version": "未知",
         "voltage": "未知",
         "width": "0"
+      }
+    },
+    "prn256m16z90bd8ge": {
+      "data": {
+        "partNumber": "PRN256M16Z90BD8GE",
+        "vendor": "镁光降级/Spectek",
+        "depth": "256M",
+        "grade": "8K Grade A ~98-100%",
+        "mark": "SpecTek Mark; 8 chip only",
+        "package": "TFBGA 96/144B, 9x14x1.2",
+        "speed": "未知",
+        "type": "DDR4",
+        "vendor_code": "B5",
+        "voltage": "1.2V DDR4",
+        "width": "16"
+      }
+    },
+    "h5tc2g63gfr": {
+      "data": {
+        "partNumber": "H5TC2G63GFR",
+        "vendor": "海力士/Hynix",
+        "bank": "8 Banks",
+        "density": "2Gb, 8K/64ms Refres",
+        "package": "FBGA SDP (Single Die Package)",
+        "package_material": "Lead Free & Halogen Free (ROHS/ROHS2 compliant)",
+        "power": "VDD=1.35V & VDDQ=1.35V",
+        "revision": "8th Gen",
+        "speed": "未知",
+        "temppower": "未知",
+        "type": "DDR3 SDRAM",
+        "vendor_code": "AD",
+        "width": "x16",
+        "part_type": "OLD"
+      }
+    },
+    "mt60b2g8hb-56b:a": {
+      "data": {
+        "partNumber": "MT60B2G8HB-56B:A",
+        "vendor": "镁光/Micron",
+        "density": "2G",
+        "die": "未知",
+        "esws": "None",
+        "speed": "DDR5-5600B PC5-5600 2800MHz 5600MTPS 46-45-45",
+        "type": "DDR5 SDRAM",
+        "vendor_code": "2C",
+        "voltage": "VDD 1.1, VDDQ 1.1",
+        "width": "8",
+        "other": "无",
+        "temp": "Commercial temperature"
       }
     }
   }

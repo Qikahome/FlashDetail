@@ -697,7 +697,7 @@ def get_dram_detail(arg: str, refresh: bool = False, debug: bool=False,save: boo
                 return cached_data
         # 本地算法解码（这是有可能的，所以WIP）
         if not result and local is not False:pass
-        
+        if full_pn.startswith("CT"):full_pn="M"+full_pn[1:]
         # 在线dram解码
         if not result and local is not True:
             # 使用原始料号或从micron-online获取的完整料号调用DRAM接口
@@ -810,7 +810,8 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
 def is_dram(pn:str) -> bool:
     """判断是否为DRAM料号"""
     pn=pn.upper()
-    return pn.startswith("NT") or pn.startswith("H5") or ((pn.startswith("D") or pn.startswith("C") or pn.startswith("PE")) and len(pn)==5) or pn.startswith("K4") or pn.startswith("MT41")
+    return pn.startswith("NT") or pn.startswith("H5") or ((pn.startswith("D") or pn.startswith("C") or (pn.startswith("P") and not pn.startswith("PF"))) and len(pn)==5) or\
+            pn.startswith("K4") or (pn.startswith("MT") and not pn.startswith("MT29F")) or pn.startswith("CT")
 
 def is_phison(pn:str,**kwargs) -> bool:
     """判断是否为Phison料号"""

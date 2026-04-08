@@ -915,9 +915,9 @@ def 搜(arg: str,**kwargs) -> str:
     arg = arg.lower()
     raw_result = FDQueryMethods.search(arg,**kwargs)
     result = result_to_text(raw_result, **kwargs)
-    if not result:
-        if all_numbers_alpha(arg):
-            result = "无结果"
+    if not result or result=="未能查询到结果：找不到相关料号":
+        if not all_numbers_alpha(arg):
+            result = ""
     return result
 
 
@@ -1047,6 +1047,15 @@ if __name__ == "__main__":
         plugin_config = Config.from_file()
     instance()
 
+# reload
+# reload
+# reload
+# reload
+# reload
+# reload
+# reload
+# reload
+# reload
 # reload
 # reload
 # reload

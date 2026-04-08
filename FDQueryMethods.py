@@ -3,6 +3,7 @@ import requests
 import os
 from bs4 import BeautifulSoup
 import urllib3
+import math
 
 from . import spectek_decoder_v2
 
@@ -264,7 +265,8 @@ def search(arg: str, debug: bool=False, count: int=10, url:str|None=None, local:
     # 处理最终结果
     return {
         "result": bool(combined_results),
-        "data": combined_results
+        "data": combined_results,
+        "error": "找不到相关料号"
     }
 
 
@@ -427,11 +429,30 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
     try:
         # 提取有效字符（字母/数字）
         id_str= ""
-        for c in arg:
-            if c.upper() in ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]:
-                id_str += c.upper()
+        arg=arg.upper().replace("0X","").replace("ID","").strip()
+        
+        # 按英文逗号分组处理
+        groups = arg.split(',')
+        processed_groups = []
+        
+        for group in groups:
+            # 提取每个分组中的hex字符
+            hex_chars = ''.join([c for c in group if c in "0123456789ABCDEF"])
+            # 如果分组只有一个hex数字，则前补0
+            if len(hex_chars) == 1:
+                hex_chars = '0' + hex_chars
+            processed_groups.append(hex_chars)
+        
+        # 组合所有处理后的分组
+        combined_hex = ''.join(processed_groups)
+        
+        # 提取最多12位
+        for c in combined_hex:
+            if c in "0123456789ABCDEF":
+                id_str += c
             if len(id_str) >= 12:
                 break  # 超过12位则截断
+        
         # 不足12位则补0
         if len(id_str) < 12:
             id_str += '0' * (12 - len(id_str))  
@@ -457,11 +478,12 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 "D7": "4GB",
                 "DE": "8GB",
                 "3A": "16GB",  "5A": "16GB",
-                "3C": "32GB",  "4C": "32GB", "5C": "64GB",
+                "3C": "32GB",  "4C": "32GB", "5C": "32GB",
                 "3E": "64GB", "5E": "64GB", "7E": "64GB",
                 "48": "128GB",  "89": "128GB",
                 "58": "160GB",
                 "73": "170.625GB",
+                "77": "341.25GB",
                 "49": "256GB",
                 "40": "512GB",
                 "41": "1TB",
@@ -475,9 +497,20 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 "A3":"32GB", "A4": "32GB",
                 "B4": "48GB",
                 "C3": "64GB", "C4": "64GB",
-                "CB": "96GB",
+                "CB": "96GB", "CC": "96GB",
                 "D3": "128GB","D4": "128GB",
-                "E4": "256GB",
+                "09": "153.6GB",
+                "E3": "256GB","E4": "256GB",
+                "F3": "512GB","F4": "512GB",
+                "03":"1TB",   "04":"1TB",
+            }
+            DENSITY_MAPPING_YMTC = { #YMTC的容量规则
+                "C2":"16GB",
+                "C3":"32GB",
+                "C4":"64GB",
+                "C5":"128GB","D5":"170GB",
+                "C6":"256GB",
+                "C7":"512GB",
             }
             #Toggle阵营
             if id_str.startswith(("98","45")):
@@ -492,7 +525,7 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 pn1=int(id_str[10],16)%8
                 pn2=int(id_str[11],16)%8
                 p_n=str(pn1)+str(pn2)
-                data["processNode"]={"71":"BiCS2","72":"BiCS3","63":"BiCS4(.5)","64":"BiCS5","65":"BiCS6","66":"BiCS8",
+                data["processNode"]={"71":"BiCS2","72":"BiCS3","63":"BiCS4.5" if id_str[8]=="F" else "BiCS4","64":"BiCS5","65":"BiCS6","66":"BiCS8",
                     "51":"15nm(1z)","50":"A19nm(1y)","57":"19nm(1x)","56":"24nm"
                 }.get(p_n,"未知")
             elif id_str.startswith("AD"):
@@ -503,40 +536,72 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
                 data["pageSize"] = ["2","4","8","16"][int(id_str[7],16)%4]
                 data["plane"] = ["1","2","4","8"][int(id_str[4],16)%4]
                 # data["plane"] = str(int(data["totalPlane"])//int(data["die"]))
-                data["processNode"] = {"40":"32nm","44":"20nm","C4":"20nm","4A":"16nm","50":"14nm",
+                data["processNode"] = {"40":"32nm","43":"26nm","44":"20nm","C4":"20nm","4A":"16nm","25":"16nm","50":"14nm",
                 "60":"3DV1","70":"3DV2","80":"3DV3","90":"3DV4","A0":"3DV5",
                 "B0":"3DV6","C0":"3DV7","D0":"3DV8"}.get(id_str[10]+"0"if id_str[11]=="2"else id_str[10:12],"未知")
                 if("3D" in data["processNode"]):
                     data["density"]=total_density(data["density"],data["die"]) #idk
             # onfi阵营
-            elif id_str.startswith(("2C","89")):
+            elif id_str.startswith(("2C","89","B5")):
                 result["result"] = True
-                data["vendor"]={"2C":"镁光","89":"英特尔"}[id_str[:2]]
+                data["vendor"]={"2C":"镁光","89":"英特尔","B5":"Spectek"}[id_str[:2]]
                 data["density"] = DENSITY_MAPPING_IM.get(id_str[2:4], "未知")
                 data["die"],data["cellLevel"]=get_die_cellLevel(id_str)
                 # data["pageSize"] = ["2","4","8","16"][int(id_str[7],16)%4] #还不知道 # 我翻遍了料号都看不出来 #只能查表了
                 _2d_pn=id_str[6:8]
-                if(_2d_pn=="32"):# 3D
+                if(_2d_pn in ["32","42"]):# 3D
                     data["processNode"]={"AA":{"MLC":"3D1 32L(L06)","TLC":"3D1 32L(B0K)","QLC":"3D2 64L(N18)"}.get(data["cellLevel"],"3D1 32L"),
                     "A1":"3D1 32L(B05)" if id_str[2:4]=="84" else "3D2 64L(B16)",
                     "A6":{"TLC":"3D2 64L(B17)","QLC":"3D4 144L(N38A)"}.get(data["cellLevel"],"3D2 64L(B17)"),
                     "A2":"3D3 96L(B27A)",
-                    "E6":"3D3 96L(B27C)" if id_str[-1]=="4" else "3D3 96L(B27B)",
-                    "C2":"3D4 144L(N38B)",
-                    "C6":{"1":"3D3 96L(N28A)","6":"3D3 96L(M26A)"}.get(id_str[4],"3D4 144L(N38A)"),
+                    "E6":{"00":"3D3 96L(B27B)","04":"3D3 96L(B27C)","30":"3D6 232L(B57T)"}.get(id_str[10::],"3D3 96L(B27B)"),
+                    "C2":{"2":"3D5 176L(N4PA)","9":"3D4 144L(N38B)","A":"3D4 144L(N38B)"}.get(id_str[4],"请联系管理员添加"),
+                    "C6":{"1":"3D3 96L(N28A)","9":{"C":"3D3 96L(N28A)","8":"3D4 144L(N38A)"}.get(id_str[5],"请联系管理员添加"),"6":"3D3 96L(M26A)","A":"3D4 144L(N38A)"}.get(id_str[4],"请联系管理员添加"),
                     "E5":"3D4 144L(B36R)",
                     "EA":{"10":"3D4 144L(B37R)","30":{"TLC":"3D5 176L(B47R)","QLC":"3D5 176L(N48R)"}.get(data["cellLevel"],"3D5 176L"),
                     "34":"3D5 176L(B47T)"}.get(id_str[10::],"3D5 176L"),
-                    "E8":{"TLC":"3D6 232L(B58R)","QLC":"3D6 232L(N58R)"}.get(data["cellLevel"],"3D6 232L")}.get(id_str[8:10],"未知")
+                    "E8":{"30":{"TLC":"3D6 232L(B58R)","QLC":"3D6 232L(N58R)"}.get(data["cellLevel"],"3D6 232L"),"33":{"QLC":"3D7 ???L(N69R)"}.get(data["cellLevel"],"3D6 232L")}.get(id_str[10::],"未知")}.get(id_str[8:10],"未知")
                     data["plane"]="2" if (data["processNode"]=="3D2 64L(B16)" or data["processNode"]=="3D1 32L(B05)") else "4"
                     data["pageSize"] = "16"
                 else:
-                    data["processNode"] = {"46":"32nm","CB":"25nm","3C":"20nm","54":"16nm"}.get(_2d_pn,"未知")
+                    data["processNode"] = {"46":"32nm","CB":"25nm","3C":"20nm","54":"16nm","34":"IM3D"}.get(_2d_pn,"未知")
                     data["plane"] = "2"
                     die_size = calculate_die_size(data["density"],data["die"])
-                    data["processNode"] += f"({({"SLC":"M","MLC":"L","TLC":"B"}.get(data["cellLevel"],"x"))}{({"46":"6","CB":"7","3C":"8","54":"9"}.get(_2d_pn,"x"))}{({"16GB":"5","8GB":"4","4GB":"3","2GB":"2"}.get(die_size,"x"))})"
+                    data["processNode"] += f"({({"SLC":"M","MLC":"L","TLC":"B"}.get(data["cellLevel"],"x"))}{({"46":"6","CB":"7","3C":"8","54":"9","34":"0"}.get(_2d_pn,"x"))}{({"16GB":"5","8GB":"4","4GB":"3","2GB":"2"}.get(die_size,"x"))})"
                     if data["processNode"] in ("20nm(L84)","25nm(L74)"): data["pageSize"] = "8"
                     elif not data["processNode"].startswith("32nm"): data["pageSize"] = "16"
+            elif id_str.startswith("9B"):
+                result["result"] = True
+                data["vendor"] = "长江存储"
+                data["pageSize"] = "16"
+                if(id_str[0:8]=="9B490100"):
+                    data["density"]="8GB"
+                    data["die"]="1"
+                    data["cellLevel"]="MLC"
+                    data["plane"]="1"
+                else:
+                    data["density"] = DENSITY_MAPPING_YMTC.get(id_str[2:4], "未知")
+                    data["die"],data["cellLevel"]=get_die_cellLevel(id_str)
+                    data["plane"] = str((int(id_str[6:8], 16) >> 5) * 2)
+                data["dieDensity"] = total_density(data["density"],str(1.0/int(data["die"])))
+                data["processNode"] = "x" + id_str[8] + "-" + {"MLC":"A","TLC":"9","QLC":"6"}.get(data["cellLevel"],"x") +\
+                    "0" + str(int(math.log2(int(data["dieDensity"][:-2])))) + "0"
+                data["processNode"]={\
+                    "x0-A030":"DBS(x0-A030)",
+                    "x1-9050":"JGS(x1-9050)",
+                    "x2-9060":"TAS(x2-9060)",
+                    "x2-9070":"HUS(x2-6070)",
+                    "x3-9060":"WYS(x3-9060)",
+                    "x3-9070":"WDS(x3-9070)",
+                    "x3-6070":"EMS(x3-6070)",
+                    "x4-9070":"WTS(x4-9070)",
+                    "x4-9070":"SQS(x4-9070)",
+                    "x4-6080":"PTS(x4-6080)",
+                    }.get(data["processNode"],data["processNode"])
+                if(data["processNode"]=="HUS(x2-6070)"):
+                    data["plane"]="6"
+                    data["cellLevel"]="QLC"
+
 
             result["data"] = data
         # 联网解码
@@ -582,7 +647,6 @@ def get_detail_from_ID(arg: str, refresh: bool = False,debug: bool=False,save: b
 # Micron料号解析函数
 def parse_micron_pn(arg: str, refresh: bool = False, debug: bool=False,save: bool=None,local: bool=False,**kwargs) -> dict:
     """解析Micron PN
-    
     Args:
         arg: 镁光料号
         refresh: 是否强制刷新数据（不使用缓存）
@@ -768,6 +832,7 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
             result = {"result": False, "error": "Phison料号长度必须为10位"}
             result["accept"] = lambda: None
             return result
+        pn=pn.replace("0","O")
         data={"partNumber":pn,"type":"NAND","width":"x8"}
         data["vendor"]="群联-"+{"T":"东芝","S":"恺侠","I":"镁光","K":"镁光","H":"海力士",
                                 "D":"闪迪","C":"长江存储","N":"英特尔"}.get(pn[0],"未知")
@@ -782,6 +847,8 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
         data["density"]={"7":"16GB","8":"32GB","9":"64GB","A":"128GB",
                         "B":"256GB","E":"192GB","H":"512GB","I":"1024GB",
                         "J":"2048GB"}.get(pn[3],"未知")
+        if data.get("density","未知") != "未知" and data.get("die","未知") != "未知":
+            data["dieDensity"] = total_density(data["density"],str(1.0/int(data["die"])))
         def get_process_node(pn: str) -> tuple[str,str]:
             """根据Phison料号获取制程"""
             if pn[0]=="T" or pn[0]=="S" or pn[0]=="D": #闪迪/恺侠
@@ -790,13 +857,13 @@ def parse_phison_pn(arg: str, debug: bool=False,save: bool=None,**kwargs) -> dic
                         "V":("BiCS2","TLC"),"I":("BiCS3","TLC"),"W":("BiCS4","TLC"),"X":("BiCS4.5","TLC"),
                         "Y":("BiCS5","TLC"),"1":("BiCS6","TLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="H":#海力士
-                return {"P":("16nm","MLC"),"X":("3DV7","TLC")}.get(pn[8],("未知","未知"))
+                return {"P":("16nm","MLC"),"O":("3DV4","TLC"),"W":("3DV6","TLC"),"X":("3DV7","TLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="I" or pn[0]=="K" or pn[0]=="N":#IM
                 return {"N":("20nm(L85)","MLC"),"P":("16nm(L95)","MLC"),#2D
-                        "O":("L06/B16/N18","未知"),"V":("B27A","TLC"),"I":("B27B","TLC"),"X":("B36/B37/N38","TLC/QLC"),
-                        "Y":("B47R","TLC"),"Z":("N48R","QLC")}.get(pn[8],("未知","未知"))
+                        "O":("L06/B16/N18","未知"),"V":("B27A","TLC"),"W":("N28A","QLC"),"I":("B27B","TLC"),"X":("B36/B37/N38","TLC/QLC"),
+                        "Y":("B47R","TLC"),"Z":("N48R","QLC"),"1":("B58R","TLC"),"2":("N58R","QLC")}.get(pn[8],("未知","未知"))
             elif pn[0]=="C":
-                return {"O":("JGS","TLC")}.get(pn[8],("未知(长江存储料号缺乏，希望大家多多提供)","未知"))
+                return {"O":({"32GB":"JGS(X1-9050)","64GB":"TAS(X2-9060)"}.get(data["dieDensity"],"未知"),"TLC")}.get(pn[8],("未知","未知"))
             else:
                 return ("未知","未知")
         

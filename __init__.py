@@ -49,6 +49,8 @@ FlashDetail插件使用说明
     其他命令：
         /status - 显示插件运行状态
         /version - 显示插件版本信息
+        /source - 显示项目源码链接
+        /issue - 显示问题反馈链接
         /help - 显示此帮助信息
 
     提示：
@@ -112,6 +114,8 @@ FlashDetail插件使用说明
     reload_cmd = on_command("reload", priority=1, rule=is_enabled_for, block=False)
     status_cmd = on_command("status", priority=1, rule=is_enabled_for, block=False)
     version_cmd = on_command("version", priority=1, rule=is_enabled_for, block=False)
+    source_cmd = on_command("source", priority=1, rule=is_enabled_for, block=False)
+    issue_cmd = on_command("issue", priority=1, rule=is_enabled_for, block=False)
     op_cmd = on_command("op", priority=1, rule=is_enabled_for, block=False)  # 管理员管理命令
     deop_cmd = on_command("deop", priority=1, rule=is_enabled_for, block=False)
     ban_cmd = on_command("ban", priority=1, rule=is_enabled_for, block=False)
@@ -279,6 +283,17 @@ FlashDetail插件使用说明
             "仅供学习和测试使用"
         ]
         await version_cmd.finish("\n".join(version_info))
+    
+    # 源码链接命令
+    @source_cmd.handle()
+    async def source_handler(event: Event):
+        await source_cmd.finish("FlashDetail 项目源码：\nhttps://github.com/Qikahome/FlashDetail")
+    
+    # 问题反馈命令
+    @issue_cmd.handle()
+    async def issue_handler(event: Event):
+        await issue_cmd.finish("FlashDetail 问题反馈：\nhttps://github.com/Qikahome/FlashDetail/issues")
+    
     # 帮助命令
     @help_cmd.handle()
     async def help_command_handler(event: Event):
